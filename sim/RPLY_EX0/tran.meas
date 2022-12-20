@@ -7,6 +7,7 @@ echo "MEAS_START"
 
 let ibn = -i(v0)
 meas tran ibns_20u find ibn at=9.5n
+meas tran ibns_20u_9n find ibn at=9n
 meas tran vgs_m1 find v(ibps_4u) at=9.5n
 
 
