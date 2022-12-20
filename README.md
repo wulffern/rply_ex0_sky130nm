@@ -15,7 +15,7 @@ Example of flow with a current mirror
 |0.3.0 | :white_check_mark: | Typical simulation |
 |0.4.0 | :white_check_mark: | Corner simulation |
 |0.5.0 | :white_check_mark: | Made layout |
-|0.6.0 | :x: | DRC/LVS clean|
+|0.6.0 | :white_check_mark: | DRC/LVS clean|
 |0.7.0 | :x: | Extracted parasitics|
 |0.8.0 | :x: | Simulated parasitics |
 |0.9.0 | :x: | Updated README with simulation results|
@@ -443,12 +443,10 @@ however, today it seems dated. However, it is free, so we use it.
 
 Try google for most questions, and there are youtube videos that give an intro.
 
-[Magic Tutorial 1](https://www.youtube.com/watch?v=ORw5OaY33A4&t=9s)
-[Magic Tutorial 2](https://www.youtube.com/watch?v=NUahmUtY814)
-[Magic Tutorial 3](https://www.youtube.com/watch?v=OKWM1D0_fPI)
-
-
-[Magic command reference](http://opencircuitdesign.com/magic/commandref/commands.html)
+- [Magic Tutorial 1](https://www.youtube.com/watch?v=ORw5OaY33A4&t=9s)
+- [Magic Tutorial 2](https://www.youtube.com/watch?v=NUahmUtY814)
+- [Magic Tutorial 3](https://www.youtube.com/watch?v=OKWM1D0_fPI)
+- [Magic command reference](http://opencircuitdesign.com/magic/commandref/commands.html)
 
 Default magic start with the BOX tool. Mouse left-click to select bottom corner,
 left-click to select top corner.
@@ -508,6 +506,8 @@ Select the rectangle, and copy to the other transistors
 
 Connect the sources to ground. 
 
+![](documents/ground.png)
+
 ## Route Gates
 
 All the gates are connected, so we can enter use the wire mode
@@ -522,6 +522,8 @@ Press "space" to enter wire mode. Left click to start a wire, and right click to
 
 The drain of M1 transistor needs a connection to from gate to drain. We do that for the middle transistor.
 
+![](documents/gates.png)
+
 ## Drain of M2
 
 Select a box on the left most transistor drain. Paint m1.
@@ -530,11 +532,53 @@ Unexpand all, use the wire tool to draw connections for the drains.
 
 To add vias you can do "shift-left" to move up a metal, and "shift-right" to go down.
 
+![](documents/drains.png)
 
 ## Add labels
 
 Select a box on a metal, and use "Edit->Text" to add labels for the ports.
 
+
+# Check layout
+
+The DRC can be seen directly in Magic VLSI as you draw.
+
+To check layout versus schematic navigate to work/ and do
+
+``` tcl
+make xsch xlvs
+```
+
+And you should see that it's incorrect. I forgot one transistor of the current mirror, M2 was 5 devices.
+
+Add the fith transistor and try again. It should still be incorrect.
+
+Turns out that the Xschem interpretation of width is different than in Magic VLSI.
+
+In xschem "W=3.6, nf=2" means that the device is actually 3.6 um wide, but has two fingers.
+In Magic "W=3.6, nf=2" means that the device is 7.2 um wide, and has fingers of 3.6 um. 
+
+The easiest way to fix it is to modify the schematic to match the layout.
+
+Open the schematic, select M1, press q, and change "W=7.2". Do the same for M2.
+
+Now the layout should match the schematic.
+
+![](documents/layout.png)
+
+# Extract parasitics
+
+With the layout complete, we can extract parasitic capacitance.
+
+``` bash
+make lpe
+```
+
+Check the generated netlist
+
+``` bash
+cat lpe/RPLY_EX0_lpe.spi 
+```
 
 
 

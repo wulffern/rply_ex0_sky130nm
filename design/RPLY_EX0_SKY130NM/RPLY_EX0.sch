@@ -40,7 +40,7 @@ company="wulff"}
 C {devices/ipin.sym} -360 -340 0 0 {name=p2 lab=VSS}
 C {sky130_fd_pr/nfet_01v8.sym} -200 -370 0 1 {name=M1
 L=0.36
-W=3.6
+W=7.2
 nf=2 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -55,7 +55,7 @@ spiceprefix=X
 C {devices/ipin.sym} -360 -440 0 0 {name=p3 lab=IBPS_4U}
 C {sky130_fd_pr/nfet_01v8.sym} -80 -370 0 0 {name=M2[4:0]
 L=0.36
-W=3.6
+W=7.2
 nf=2 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
