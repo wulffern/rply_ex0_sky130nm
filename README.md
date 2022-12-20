@@ -8,7 +8,7 @@ Carsten Wulff
 Example of flow with a current mirror
 
 # Changelog/Plan
-| Version | Status | Comment|
+| Tag | Status | Comment|
 | :-| :-| :-|
 |0.1.0 | :white_check_mark: | Fix readme |
 |0.2.0 | :white_check_mark: | Made schematic |
@@ -16,8 +16,8 @@ Example of flow with a current mirror
 |0.4.0 | :white_check_mark: | Corner simulation |
 |0.5.0 | :white_check_mark: | Made layout |
 |0.6.0 | :white_check_mark: | DRC/LVS clean|
-|0.7.0 | :x: | Extracted parasitics|
-|0.8.0 | :x: | Simulated parasitics |
+|0.7.0 | :white_check_mark: | Extracted parasitics|
+|0.8.0 | :white_check_mark: | Simulated parasitics |
 |0.9.0 | :x: | Updated README with simulation results|
 |1.0.0 | :x: | All done|
 
@@ -45,6 +45,8 @@ Example of flow with a current mirror
 | AVDD        | 1.7 | 1.8             | 1.9 | V    |
 | IBPS_20U    | 15  | 21              | 30  | uA   |
 | Temperature | -40 | 27              | 125 | C    |
+
+For details see [sim/RPLY_EX0](sim/RPLY_EX0/README.md)
 
 
 # Status
@@ -579,6 +581,116 @@ Check the generated netlist
 ``` bash
 cat lpe/RPLY_EX0_lpe.spi 
 ```
+
+
+# Simulate parasitics
+
+Navigate to sim/RPLY_EX0. We now want to simulate the layout.
+
+The default `tran.spi` should already have support for that.
+
+Open the Makefile, and change 
+
+```
+VIEW=Sch 
+```
+
+to 
+
+```
+VIEW=Lay 
+```
+
+## Typical simuation
+
+Run
+
+```bash
+make typical
+```
+
+The simulation might not look right.
+
+Open the `work/lpe/RPLY_EX0_lpe.spi` and `work/xsch/RPLY_EX0.spice` and have a look at the .subckt line.
+
+For me, the ports were not the same order, which makes the simuation fail.
+
+To fix it, open `design/RPLY_EX0_SKY130NM/RPLY_EX0.mag` in your favorite text editor. 
+Yes, the layout file is a text file!
+
+Take a look towards the bottom, you'll see 
+
+``` 
+flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+port 1 nsew
+flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+port 2 nsew
+flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+port 3 nsew
+```
+
+Change the numbers so we get the same port order as the schematic
+
+``` 
+flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+port 2 nsew
+flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+port 1 nsew
+flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+port 3 nsew
+```
+
+Open a new terminal, navigate to work/ and extract the parasitics again
+
+``` bash
+make lpe
+```
+Check the `work/lpe/RPLY_EX0_lpe.spi` again.
+
+Run typical simulation.
+
+Observer that now the difference between "ibps_20u" and "ibps_20u_9n" is a bit large.
+
+Check the current waveform. Change the 
+transient simulation to run a bit longer, and extract a bit later. 
+19.5 ns seem to work.
+
+## Corners 
+Navigate to sim/RPLY_EX0. Run all corners again
+
+``` bash
+make all
+```
+
+## Summary 
+
+Open `summary.yaml` and add the layout files.
+
+``` yaml
+      - name: Lay_typ
+        src: results/tran_Lay_typical
+        method: typical
+      - name: Lay_etc
+        src: results/tran_Lay_etc
+        method: minmax
+      - name: Lay_3std
+        src: results/tran_Lay_mc
+        method: 3std
+```
+
+Open the README.md and have a look a the results.
+
+# Gotchas
+
+- If you have not resimulated the schematic, then you're comparing apples to oranges since the schematic had W=3.6
+- In the extracted layout the ad, as, etc looks funky, I don't understand why they are zero
+- One of reasons the simulation is slow is that ngspice needs to load about 50 MB of spice files (the skywater models). 
+  They could run faster if we only loaded what is necessary, but that's a bit more work. 
+
+# Bugs 
+
+If you find errors in this "tutorial", then fork, fix, and send me a PR.
+
 
 
 

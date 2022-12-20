@@ -1,6 +1,6 @@
 * NGSPICE file created from RPLY_EX0.ext - technology: sky130B
 
-.subckt RPLY_EX0 IBPS_4U VSS IBNS_20U
+.subckt RPLY_EX0 VSS IBPS_4U IBNS_20U
 X0 IBNS_20U IBPS_4U VSS VSS sky130_fd_pr__nfet_01v8 ad=5.22e+12p pd=3.89e+07u as=1.2528e+13p ps=9.336e+07u w=3.6e+06u l=360000u
 X1 VSS IBPS_4U IBNS_20U VSS sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.6e+06u l=360000u
 X2 IBNS_20U IBPS_4U VSS VSS sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=3.6e+06u l=360000u

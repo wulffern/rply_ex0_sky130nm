@@ -84,9 +84,9 @@ transform 1 0 6297 0 1 970
 box -297 -570 297 570
 << labels >>
 flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
-port 1 nsew
-flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
 port 2 nsew
+flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+port 1 nsew
 flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
 port 3 nsew
 << end >>
