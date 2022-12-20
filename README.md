@@ -32,6 +32,66 @@ git push -u origin main
 
 Open README.md in your favorite text editor and make necessary changes 
 
+
+## Familiarize yourself with the Makefile and make
+
+``` bash
+cd work 
+make 
+```
+
+## Draw schematic 
+
+All commands (except simulation) must be started from work/
+
+```
+make xview
+```
+
+### Add Ports 
+Add IBPS_4U and IBPS_20U ports, the P and N in the name signifies what
+transistor the current comes from. So IBPS must go into a diode connected NMOS,
+and N will be our output, and go into a diode connected PMOS somewhere else
+
+
+### Add transistors 
+
+Use 'Shift-I' to open the library manager. Use the "sky130B/libs.tech/xschem"
+path. Open the "sky130_fd_pr" library. Find nfet_01v8.sym and place in your
+schematic.
+
+
+Select the transistor by clicking on it, press 'q' to bring up the properties. 
+Set L=0.36, W=3.6, nf=2 and press OK.
+
+Select the transistor and press 'c' to copy it, while dragging, press 'shift-f'
+to flip the transistor so our current mirror looks nice. 'shift-r' rotates the
+transistor, but we don't want that now. 
+
+Press ESC to deselect everything 
+
+Select ports, and use 'm' to move the ports close to the transistors.
+
+Press 'w' to route wires.
+
+Use 'shift-z' and z, to zoom in and out 
+
+Use 'f' to zoom full screen 
+ 
+Remember to save the schematic 
+
+
+### Netlist schematic 
+
+Check that the netlist looks OK 
+
+In work/
+
+``` bash
+make xsch 
+cat xsch/RPLY_EX0.spice
+```
+
  
 # What
 
@@ -60,7 +120,6 @@ Open README.md in your favorite text editor and make necessary changes
 # Signal interface
 | Signal   | Direction | Domain  | Description        |
 |:---------|:---------:|:-------:|:-------------------|
-| VDD_1V8  | Input     | VDD_1V8 | Main supply        |
 | IBPS_4U  | Input     | VDD_1V8 | Input bias current |
 | IBNS_20U | Output    | VDD_1V8 | Output current     |
 | VSS      | Input     | Ground  |                    |
