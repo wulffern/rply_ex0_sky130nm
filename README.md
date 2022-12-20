@@ -14,7 +14,7 @@ Example of flow with a current mirror
 |0.2.0 | :white_check_mark: | Made schematic |
 |0.3.0 | :white_check_mark: | Typical simulation |
 |0.4.0 | :white_check_mark: | Corner simulation |
-|0.5.0 | :x: | Made layout |
+|0.5.0 | :white_check_mark: | Made layout |
 |0.6.0 | :x: | DRC/LVS clean|
 |0.7.0 | :x: | Extracted parasitics|
 |0.8.0 | :x: | Simulated parasitics |
@@ -419,7 +419,133 @@ From the corner and mismatch simulation, we can observe a few things.
   the resulting current is outside our specification of +- 20 %. I'll leave it up to you to fix it.
  
  
+# Make layout 
 
- 
+Open Magic VLSI
+
+``` bash
+magic &
+```
+
+Navigate to design directory
+
+``` tcl
+cd ../design
+cd RPLY_EX0_SKY130NM
+load RPLY_EX0.mag
+```
+
+Now brace yourself, Magic VLSI was created in the 1980's. For it's time it was extremely modern,
+however, today it seems dated. However, it is free, so we use it.
+
+
+## Magic general
+
+Try google for most questions, and there are youtube videos that give an intro.
+
+[Magic Tutorial 1](https://www.youtube.com/watch?v=ORw5OaY33A4&t=9s)
+[Magic Tutorial 2](https://www.youtube.com/watch?v=NUahmUtY814)
+[Magic Tutorial 3](https://www.youtube.com/watch?v=OKWM1D0_fPI)
+
+
+[Magic command reference](http://opencircuitdesign.com/magic/commandref/commands.html)
+
+Default magic start with the BOX tool. Mouse left-click to select bottom corner,
+left-click to select top corner.
+
+Press "space" to select another tool (WIRING, NETLIST, PICK).
+
+Type "macro help" in the command window to see all shortcuts
+
+| Hotkey      | Function                          |
+|-------------|-----------------------------------|
+| v           | View all                          |
+| shift-z     | zoom out                          |
+| z           | zoom in                           |
+| x           | look inside box (expand)          |
+| shift-x     | don't look inside box  (unexpand) |
+| u           | undo                              |
+| d           | delete                            |
+| s           | select                            |
+| Shift-Up    | Move cell up                      |
+| Shift-Down  | Move cell down                    |
+| Shift-Left  | Move cell left                    |
+| Shift-Right | Moce cell right                   |
+
+## Add transistors
+
+In the Window menu, turn grid on, set grid 0.5 um and turn on snap-to grid. 
+
+Select "Devices 1 - NMOS". Match the parameters to schematic (W=3.6, L=0.36, fingers=2)
+
+Unexpand, so it's possible to select the device (shift-x)
+
+Place cursor over the device and select (s)
+
+Move cursor to somewhere else, and copy (c), it will then snap to grid.
+
+Select the old device, and delete (d).
+
+Copy 4 more devices for M2.
+
+## Add Ground 
+
+In the command window, type
+
+``` tcl
+see no *
+see locali
+see m1
+```
+
+Select a 0.5 um box below the transistors and paint the rectangle (middle click on locali)
+
+Change grid to 0.1 um.
+
+Connect guard rings to ground. Select a smaller box between guardring and the ground rectangle.
+
+Select the rectangle, and copy to the other transistors 
+
+Connect the sources to ground. 
+
+## Route Gates
+
+All the gates are connected, so we can enter use the wire mode
+
+```tcl
+see no locali 
+```
+
+It seems like the device generator adds too small m1 around the gate, so add a rectangle.
+
+Press "space" to enter wire mode. Left click to start a wire, and right click to end the wire.
+
+The drain of M1 transistor needs a connection to from gate to drain. We do that for the middle transistor.
+
+## Drain of M2
+
+Select a box on the left most transistor drain. Paint m1.
+
+Unexpand all, use the wire tool to draw connections for the drains. 
+
+To add vias you can do "shift-left" to move up a metal, and "shift-right" to go down.
+
+
+## Add labels
+
+Select a box on a metal, and use "Edit->Text" to add labels for the ports.
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
