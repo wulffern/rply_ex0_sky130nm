@@ -43,7 +43,7 @@ Example of flow with a current mirror
 |:------------|:---:|:---------------:|:---:|:----:|
 | Technology  |     | Skywater 130 nm |     |      |
 | AVDD        | 1.7 | 1.8             | 1.9 | V    |
-| IBPS_20U    | 15  | 21              | 30  | uA   |
+| IBPS_20U    | 16  | 21              | 27  | uA   |
 | Temperature | -40 | 27              | 125 | C    |
 
 For details see [sim/RPLY_EX0](sim/RPLY_EX0/README.md)
