@@ -1,6 +1,8 @@
 
 # RPLY\_EX0\_SKY130NM
 
+Warning: Should be used in [aicex](http://github.com/wulffern/aicex)
+
 # Who
 Carsten Wulff
 
