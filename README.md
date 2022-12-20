@@ -5,9 +5,33 @@
 Carsten Wulff
 
 # Why
-Example of flow with a current mirror
+I wanted to create a step by step "tutorial" for 
+the flow. Both to debug the tech setup, and to make it easier
+for you to learn the tools. I use a simple current mirror as
+the example.
 
 # Changelog/Plan
+
+I've tagged the repo at each stage. That means you can 
+checkout the 0.1.0 tag and do things yourself.
+
+Make sure you follow the latest readme though, I've fixed
+bugs in the readme.
+
+When you clone main, you can do
+
+``` bash
+pandoc -s  -t slidy README.md -o README.html
+```
+
+and then open the html file.
+
+To checkout a specific stage, do 
+
+``` bash
+git checkout 0.1.0
+```
+
 | Tag | Status | Comment|
 | :-| :-| :-|
 |0.1.0 | :white_check_mark: | Fix readme |
@@ -18,15 +42,14 @@ Example of flow with a current mirror
 |0.6.0 | :white_check_mark: | DRC/LVS clean|
 |0.7.0 | :white_check_mark: | Extracted parasitics|
 |0.8.0 | :white_check_mark: | Simulated parasitics |
-|0.9.0 | :x: | Updated README with simulation results|
-|1.0.0 | :x: | All done|
+|0.9.0 | :white_check_mark: | Updated README with simulation results|
+|1.0.0 | :white_check_mark: | All done|
 
 # What
 
 | What      | Lib/Folder        | Cell/Name    |
 |:----------|:-----------------:|:------------:|
 | Schematic | RPLY_EX0_SKY130NM | RPLY_EX0.sch |
-| Symbol    | RPLY_EX0_SKY130NM | RPLY_EX0.sym |
 | Layout    | RPLY_EX0_SKY130NM | RPLY_EX0.mag |
 
 
@@ -47,23 +70,6 @@ Example of flow with a current mirror
 | Temperature | -40 | 27              | 125 | C    |
 
 For details see [sim/RPLY_EX0](sim/RPLY_EX0/README.md)
-
-
-# Status
-
-| Stage                       | TYPE | Status             | Comment |
-|:----------------------------|:----:|:------------------:|:-------:|
-| Specification               | DOC  | :white_check_mark: |         |
-| Schematic                   | VIEW | :white_check_mark: |         |
-| Schematic simulation        | VER  | :white_check_mark: |         |
-| Layout                      | VIEW | :x:                |         |
-| Layout parasitic extraction | VIEW | :x:                |         |
-| LPE simulation              | VER  | :x:                |         |
-| LVS                         | VER  | :x:                |         |
-| DRC                         | VER  | :x:                |         |
-| ERC                         | VER  | :x:                |         |
-| ANT                         | VER  | :x:                |         |
-
 
 
 # Getting Started 
