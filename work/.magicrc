@@ -1,0 +1,2 @@
+source ../tech/magic/.magicrc
+addpath ../design/RPLY_EX0_SKY130NM
