@@ -5,8 +5,22 @@
 Carsten Wulff
 
 # Why
-Example of flow
- 
+Example of flow with a current mirror
+
+# Changelog/Plan
+| Version | Status | Comment|
+| :-| :-| :-|
+|0.1.0 | :x: | Fix readme |
+|0.2.0 | :x: | Made schematic |
+|0.3.0 | :x: | Typical simulation |
+|0.3.1 | :x: | Made simulation |
+|0.4.0 | :x: | Made layout |
+|0.5.0 | :x: | DRC/LVS clean|
+|0.6.0 | :x: | Extracted parasitics|
+|0.7.0 | :x: | Simulated parasitics |
+|0.8.0 | :x: | Updated README with simulation results|
+|1.0.0 | :x: | All done|
+
 
 # How
 
@@ -92,6 +106,134 @@ make xsch
 cat xsch/RPLY_EX0.spice
 ```
 
+
+## Run simulation 
+I've made [cicsim](https://github.com/wulffern/cicsim) that I use to run simulations (ngspice) and extract
+results
+
+## Setup simulation environment 
+Navigate to the rply_ex0_sky130nm/sim/ directory.
+
+Make a new simulation folder 
+
+``` bash
+cicsim simcell  RPLY_EX0_SKY130NM RPLY_EX0 ../tech/cicsim/simcell_template.yaml
+```
+
+## Familiarize yourself with the simulation folder 
+
+I've added quite a few options to cicsim, and it might be confusing. For
+reference, these are what the files are used for
+
+| File         | Description                                       |
+|--------------|---------------------------------------------------|
+| Makefile     | Simulation commands                               |
+| cicsim.yaml  | Setup for cicsim                                  |
+| summary.yaml | Generate a README with simulation results         |
+| tran.meas    | Measurement to be done after simulation           |
+| tran.py      | Optional python script to run for each simulation |
+| tran.spi     | Transient testbench                               |
+| tran.yaml    | What measurements to summarize                                                   |
+
+
+The default setup should run, so 
+
+``` bash
+cd RPLY_EX0
+make typical
+```
+
+## Modify default testbench (tran.spi)
+
+Delete the VDD source
+
+Add a current source of 4uA, and a voltage source of 1V to IBNS_20U 
+
+``` spice
+IBP 0 IBPS_4U dc 4u
+V0  IBNS_20U 0 dc 1
+```
+
+Add the current in V0 to the plots
+
+## Modify measurements (tran.meas)
+
+Add measurement of the current and VGS
+
+``` spice
+let ibn = -i(v0)
+meas tran ibns_20u find ibn at=5n
+meas tran vgs_m1 find v(ibps_4u) at=5n
+```
+
+Run simulation `make typical` and check that the output looks okish.
+
+Often, it's the measurement that I get wrong, so instead of rerunning simulation every time 
+I've added a "--no-run" option to cicsim. For example `make typical OPT="--no-run`, will skip the 
+simulation, and rerun only the measurement. This is why you should split the testbench and the 
+measurement. Simulations can run for days, but measurement takes seconds. 
+
+
+You should notice that the current is not 20uA. We need to fix the schematic to make that happen.
+Change the instance name of M2 to "M2[4:0]", and rerun typical simulation. Remember to save the schematic.
+
+## Modify result specification (tran.yaml)
+
+Add the result specifications, for example 
+
+``` yaml
+ibn:
+  src:
+    - ibns_20u
+  name: Output current
+  min: -20%
+  typ: 20
+  max: 20%
+  scale: 1e6
+  digits: 3
+  unit: uA
+
+vgs:
+  src:
+    - vgs_m1
+  name: Gate-Source voltage
+  typ: 0.6
+  min: 0.3
+  max: 0.7
+  scale: 1
+  digits: 3
+  unit: V
+```
+
+Re-run the measurement and result generation `make typical OPT="--no-run"`
+
+Open the result/tran_Sch_typical.html
+
+
+## Check waveforms
+
+Start Ngspice 
+
+``` bash
+ngspice 
+```
+
+Load the results, and view the vgs 
+
+``` bash
+load output_tran/tran_SchGtAttTtVt.raw
+plot v(ibps_4u)
+plot i(v0)
+```
+
+Based on the waveform we can see that maybe the voltage and current is not completely settled at 5 ns.
+
+Change the measurement to 9.5ns
+
+
+
+
+
  
 # What
 
@@ -103,18 +245,6 @@ cat xsch/RPLY_EX0.spice
 
 
 
-# Changelog/Plan
-| Version | Status | Comment|
-| :-| :-| :-|
-|0.1.0 | :x: | Fix readme |
-|0.2.0 | :x: | Made schematic |
-|0.3.0 | :x: | Made simulation |
-|0.4.0 | :x: | Made layout |
-|0.5.0 | :x: | DRC/LVS clean|
-|0.6.0 | :x: | Extracted parasitics|
-|0.7.0 | :x: | Simulated parasitics |
-|0.8.0 | :x: | Updated README with simulation results|
-|1.0.0 | :x: | All done|
 
 
 # Signal interface

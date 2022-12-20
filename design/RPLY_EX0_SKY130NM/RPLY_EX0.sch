@@ -53,7 +53,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/ipin.sym} -360 -440 0 0 {name=p3 lab=IBPS_4U}
-C {sky130_fd_pr/nfet_01v8.sym} -80 -370 0 0 {name=M2
+C {sky130_fd_pr/nfet_01v8.sym} -80 -370 0 0 {name=M2[4:0]
 L=0.36
 W=3.6
 nf=2 
