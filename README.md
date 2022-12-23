@@ -1,7 +1,4 @@
 
-
-
-
 [Slideshow](https://wulffern.github.io/rply_ex0_sky130nm/) 
 
 [PDF](https://wulffern.github.io/rply_ex0_sky130nm/README.pdf) 
