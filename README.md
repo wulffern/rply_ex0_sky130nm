@@ -149,7 +149,7 @@ Use 'f' to zoom full screen
  
 Remember to save the schematic 
 
-![](documents/RPLY_EX0.svg)
+![](docs/RPLY_EX0.svg)
 
 ## Netlist schematic 
 
@@ -516,7 +516,7 @@ Select the rectangle, and copy to the other transistors
 
 Connect the sources to ground. 
 
-![](documents/ground.png)
+![](docs/ground.png)
 
 ## Route Gates
 
@@ -532,7 +532,7 @@ Press "space" to enter wire mode. Left click to start a wire, and right click to
 
 The drain of M1 transistor needs a connection to from gate to drain. We do that for the middle transistor.
 
-![](documents/gates.png)
+![](docs/gates.png)
 
 ## Drain of M2
 
@@ -542,7 +542,7 @@ Unexpand all, use the wire tool to draw connections for the drains.
 
 To add vias you can do "shift-left" to move up a metal, and "shift-right" to go down.
 
-![](documents/drains.png)
+![](docs/drains.png)
 
 ## Add labels
 
@@ -574,7 +574,7 @@ Open the schematic, select M1, press q, and change "W=7.2". Do the same for M2.
 
 Now the layout should match the schematic.
 
-![](documents/layout.png)
+![](docs/layout.png)
 
 # Extract parasitics
 

@@ -4,12 +4,13 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout
       - name: mkdirs
         run: |
           mkdir _build
+          cp -r docs _build
       - name: Slidy
-        uses: docker://pandoc/latex:2.9
+        uses: docker://pandoc/latex
         with:
           args: >-  # allows you to break string into multiple lines
             --standalone
@@ -24,7 +25,7 @@ jobs:
       #      --output=_build/README.pdf
       #      README.md
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
           publish_branch: gh-pages
