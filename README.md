@@ -1,8 +1,8 @@
 
 # RPLY\_EX0\_SKY130NM
 
-Head over to [wulffern.github.io/rply_ex0_sky130nm](https://wulffern.github.io/rply_ex0_sky130nm/) to find the [PDF](README.pdf) version
-and the slideshow version. 
+[Slideshow](https://wulffern.github.io/rply_ex0_sky130nm/) 
+[PDF](https://wulffern.github.io/rply_ex0_sky130nm/README.pdf) 
 
 # Who
 Carsten Wulff
