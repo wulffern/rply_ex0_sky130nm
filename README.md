@@ -1,7 +1,8 @@
 
 # RPLY\_EX0\_SKY130NM
 
-Warning: Should be used in [aicex](http://github.com/wulffern/aicex)
+Head over to [wulffern.github.io/rply_ex0_sky130nm](https://wulffern.github.io/rply_ex0_sky130nm/) to find the [PDF](README.pdf) version
+and the slideshow version. 
 
 # Who
 Carsten Wulff
@@ -75,6 +76,11 @@ For details see [sim/RPLY_EX0](sim/RPLY_EX0/README.md)
 
 
 # Getting Started 
+
+## aicex 
+
+This repository was built in [aicex](https://github.com/wulffern/aicex), so if you want to try the tutorial from scratch, then you need aicex first.
+
 
 ## Initialize new IP 
 
