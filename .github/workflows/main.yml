@@ -9,6 +9,7 @@ jobs:
         run: |
           mkdir _build
           cp -r docs _build
+          cat paper.md README.md > paper_input.md
       - name: Slidy
         uses: docker://pandoc/latex:latest
         with:
@@ -31,8 +32,8 @@ jobs:
             --csl=docs/ieee-with-url.csl
             --citeproc
             --resource-path='docs'
-            -s README.md
-            -o paper.pdf
+            -s paper_input.md
+            -o _build/paper.pdf
             --template docs/memo.latex
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
