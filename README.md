@@ -1,11 +1,25 @@
 
-# RPLY\_EX0\_SKY130NM
+---
+abstract: |
+  Tutorial on Skywater130nm open source analog flow.
+author:
+- Carsten Wulff
+title: Open Source Analog Flow for Skywater 130nm
+documentclass: docs/IEEEtran
+papersize: a4
+fontsize: 10pt
+classoption: journal
+numbersection:
+pandoc-latex-fontsize:
+  - classes: [c, listing]
+    size: footnotesize
+---
+
 
 [Slideshow](https://wulffern.github.io/rply_ex0_sky130nm/) 
+
 [PDF](https://wulffern.github.io/rply_ex0_sky130nm/README.pdf) 
 
-# Who
-Carsten Wulff
 
 # Why
 I wanted to create a step by step "tutorial" for 
@@ -35,18 +49,18 @@ To checkout a specific stage, do
 git checkout 0.1.0
 ```
 
-| Tag | Status | Comment|
-| :-| :-| :-|
-|0.1.0 | :white_check_mark: | Fix readme |
-|0.2.0 | :white_check_mark: | Made schematic |
-|0.3.0 | :white_check_mark: | Typical simulation |
-|0.4.0 | :white_check_mark: | Corner simulation |
-|0.5.0 | :white_check_mark: | Made layout |
-|0.6.0 | :white_check_mark: | DRC/LVS clean|
-|0.7.0 | :white_check_mark: | Extracted parasitics|
-|0.8.0 | :white_check_mark: | Simulated parasitics |
-|0.9.0 | :white_check_mark: | Updated README with simulation results|
-|1.0.0 | :white_check_mark: | All done|
+| Tag   | Status | Comment              |
+|:------|:-------|:---------------------|
+| 0.1.0 | v      | Fix readme           |
+| 0.2.0 | v      | Made schematic       |
+| 0.3.0 | v      | Typical simulation   |
+| 0.4.0 | v      | Corner simulation    |
+| 0.5.0 | v      | Made layout          |
+| 0.6.0 | v      | DRC/LVS clean        |
+| 0.7.0 | v      | Extracted parasitics |
+| 0.8.0 | v      | Simulated parasitics |
+| 0.9.0 | v      | Updated README       |
+| 1.0.0 | v      | All done             |
 
 # What
 
@@ -97,7 +111,8 @@ Create a repository with the same name on your choosen git vendor (for example [
 
 ``` bash
 cd rply_ex0_sky130nm
-git remote add origin git@github.com:wulffern/rply_ex0_sky130nm.git
+git remote add origin \
+ git@github.com:wulffern/rply_ex0_sky130nm.git
 git branch -M main
 git push -u origin main
 ```
@@ -155,7 +170,7 @@ Use 'f' to zoom full screen
  
 Remember to save the schematic 
 
-![](docs/RPLY_EX0.svg)
+![](docs/RPLY_EX0.pdf)
 
 ## Netlist schematic 
 
@@ -178,7 +193,8 @@ Navigate to the rply_ex0_sky130nm/sim/ directory.
 Make a new simulation folder 
 
 ``` bash
-cicsim simcell  RPLY_EX0_SKY130NM RPLY_EX0 ../tech/cicsim/simcell_template.yaml
+cicsim simcell  RPLY_EX0_SKY130NM \
+ RPLY_EX0 ../tech/cicsim/simcell_template.yaml
 ```
 
 I would recommend you have a look at simcell_template.yaml file to understand what happens.
@@ -380,7 +396,8 @@ Add the following line
 
 ``` yaml
 # Do something to parameters
-obj["ibn_settl_err"] = obj["ibns_20u"] - obj["ibns_20u_9n"]
+obj["ibn_settl_err"] = \
+  obj["ibns_20u"] - obj["ibns_20u_9n"]
 ```
 
 
@@ -635,22 +652,22 @@ Yes, the layout file is a text file!
 Take a look towards the bottom, you'll see 
 
 ``` 
-flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+flabel metal1 4460 ...
 port 1 nsew
-flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+flabel locali 4200 ...
 port 2 nsew
-flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+flabel metal2 4520 ...
 port 3 nsew
 ```
 
 Change the numbers so we get the same port order as the schematic
 
 ``` 
-flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+flabel metal1 4460 ...
 port 2 nsew
-flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+flabel locali 4200 ...
 port 1 nsew
-flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+flabel metal2 4520 ...
 port 3 nsew
 ```
 

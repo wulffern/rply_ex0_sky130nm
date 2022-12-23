@@ -24,6 +24,16 @@ jobs:
             --standalone
             --output=_build/README.pdf
             README.md
+      - name: PDF paper
+        uses: docker://pandoc/latex:latest
+        with:
+          args: >-  # allows you to break string into multiple lines
+            --csl=docs/ieee-with-url.csl
+            --citeproc
+            --resource-path='docs'
+            -s README.md
+            -o paper.pdf
+            --template docs/memo.latex
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
