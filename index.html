@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>README</title>
+  <style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div id="rply_ex0_sky130nm" class="slide section level1">
+<h1>RPLY_EX0_SKY130NM</h1>
+<p><a href="https://wulffern.github.io/rply_ex0_sky130nm/">Slideshow</a>
+<a
+href="https://wulffern.github.io/rply_ex0_sky130nm/README.pdf">PDF</a></p>
+</div>
+<div id="who" class="slide section level1">
+<h1>Who</h1>
+<p>Carsten Wulff</p>
+</div>
+<div id="why" class="slide section level1">
+<h1>Why</h1>
+<p>I wanted to create a step by step “tutorial” for the flow. Both to
+debug the tech setup, and to make it easier for you to learn the tools.
+I use a simple current mirror as the example.</p>
+</div>
+<div id="changelogplan" class="slide section level1">
+<h1>Changelog/Plan</h1>
+<p>I’ve tagged the repo at each stage. That means you can checkout the
+0.1.0 tag and do things yourself.</p>
+<p>Make sure you follow the latest readme though, I’ve fixed bugs in the
+readme.</p>
+<p>When you clone main, you can do</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span>  <span class="at">-t</span> slidy README.md <span class="at">-o</span> README.html</span></code></pre></div>
+<p>and then open the html file.</p>
+<p>To checkout a specific stage, do</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 0.1.0</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tag</th>
+<th align="left">Status</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0.1.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Fix readme</td>
+</tr>
+<tr class="even">
+<td align="left">0.2.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Made schematic</td>
+</tr>
+<tr class="odd">
+<td align="left">0.3.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Typical simulation</td>
+</tr>
+<tr class="even">
+<td align="left">0.4.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Corner simulation</td>
+</tr>
+<tr class="odd">
+<td align="left">0.5.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Made layout</td>
+</tr>
+<tr class="even">
+<td align="left">0.6.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">DRC/LVS clean</td>
+</tr>
+<tr class="odd">
+<td align="left">0.7.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Extracted parasitics</td>
+</tr>
+<tr class="even">
+<td align="left">0.8.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Simulated parasitics</td>
+</tr>
+<tr class="odd">
+<td align="left">0.9.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">Updated README with simulation results</td>
+</tr>
+<tr class="even">
+<td align="left">1.0.0</td>
+<td align="left">:white_check_mark:</td>
+<td align="left">All done</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="what" class="slide section level1">
+<h1>What</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left">What</th>
+<th align="center">Lib/Folder</th>
+<th align="center">Cell/Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Schematic</td>
+<td align="center">RPLY_EX0_SKY130NM</td>
+<td align="center">RPLY_EX0.sch</td>
+</tr>
+<tr class="even">
+<td align="left">Layout</td>
+<td align="center">RPLY_EX0_SKY130NM</td>
+<td align="center">RPLY_EX0.mag</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="signal-interface" class="slide section level1">
+<h1>Signal interface</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Signal</th>
+<th align="center">Direction</th>
+<th align="center">Domain</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">IBPS_4U</td>
+<td align="center">Input</td>
+<td align="center">VDD_1V8</td>
+<td align="left">Input bias current</td>
+</tr>
+<tr class="even">
+<td align="left">IBNS_20U</td>
+<td align="center">Output</td>
+<td align="center">VDD_1V8</td>
+<td align="left">Output current</td>
+</tr>
+<tr class="odd">
+<td align="left">VSS</td>
+<td align="center">Input</td>
+<td align="center">Ground</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="key-parameters" class="slide section level1">
+<h1>Key parameters</h1>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="center">Min</th>
+<th align="center">Typ</th>
+<th align="center">Max</th>
+<th align="center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Technology</td>
+<td align="center"></td>
+<td align="center">Skywater 130 nm</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">AVDD</td>
+<td align="center">1.7</td>
+<td align="center">1.8</td>
+<td align="center">1.9</td>
+<td align="center">V</td>
+</tr>
+<tr class="odd">
+<td align="left">IBPS_20U</td>
+<td align="center">16</td>
+<td align="center">21</td>
+<td align="center">27</td>
+<td align="center">uA</td>
+</tr>
+<tr class="even">
+<td align="left">Temperature</td>
+<td align="center">-40</td>
+<td align="center">27</td>
+<td align="center">125</td>
+<td align="center">C</td>
+</tr>
+</tbody>
+</table>
+<p>For details see <a href="sim/RPLY_EX0/README.md">sim/RPLY_EX0</a></p>
+</div>
+<div id="getting-started" class="slide section level1">
+<h1>Getting Started</h1>
+<h2 id="aicex">aicex</h2>
+<p>This repository was built in <a
+href="https://github.com/wulffern/aicex">aicex</a>, so if you want to
+try the tutorial from scratch, then you need aicex first.</p>
+<h2 id="initialize-new-ip">Initialize new IP</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> aicex/ip</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cicconf</span> newip ex0</span></code></pre></div>
+<h2 id="add-remote">Add remote</h2>
+<p>Create a repository with the same name on your choosen git vendor
+(for example <a href="https://github.com">github</a>)</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> rply_ex0_sky130nm</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin git@github.com:wulffern/rply_ex0_sky130nm.git</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div>
+<h2 id="fix-readme">Fix README</h2>
+<p>Open README.md in your favorite text editor and make necessary
+changes</p>
+<h2 id="familiarize-yourself-with-the-makefile-and-make">Familiarize
+yourself with the Makefile and make</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> work </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> </span></code></pre></div>
+</div>
+<div id="draw-schematic" class="slide section level1">
+<h1>Draw schematic</h1>
+<p>All commands (except simulation) must be started from work/</p>
+<pre><code>cd work/
+make xview</code></pre>
+<h2 id="add-ports">Add Ports</h2>
+<p>Add IBPS_4U and IBPS_20U ports, the P and N in the name signifies
+what transistor the current comes from. So IBPS must go into a diode
+connected NMOS, and N will be our output, and go into a diode connected
+PMOS somewhere else</p>
+<h2 id="add-transistors">Add transistors</h2>
+<p>Use ‘Shift-I’ to open the library manager. Use the
+“sky130B/libs.tech/xschem” path. Open the “sky130_fd_pr” library. Find
+nfet_01v8.sym and place in your schematic.</p>
+<p>Select the transistor by clicking on it, press ‘q’ to bring up the
+properties. Set L=0.36, W=3.6, nf=2 and press OK.</p>
+<p>Select the transistor and press ‘c’ to copy it, while dragging, press
+‘shift-f’ to flip the transistor so our current mirror looks nice.
+‘shift-r’ rotates the transistor, but we don’t want that now.</p>
+<p>Press ESC to deselect everything</p>
+<p>Select ports, and use ‘m’ to move the ports close to the
+transistors.</p>
+<p>Press ‘w’ to route wires.</p>
+<p>Use ‘shift-z’ and z, to zoom in and out</p>
+<p>Use ‘f’ to zoom full screen</p>
+<p>Remember to save the schematic</p>
+<p><img src="docs/RPLY_EX0.svg" /></p>
+<h2 id="netlist-schematic">Netlist schematic</h2>
+<p>Check that the netlist looks OK</p>
+<p>In work/</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> xsch </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> xsch/RPLY_EX0.spice</span></code></pre></div>
+</div>
+<div id="run-typical-simulation" class="slide section level1">
+<h1>Run typical simulation</h1>
+<p>I’ve made <a href="https://github.com/wulffern/cicsim">cicsim</a>
+that I use to run simulations (ngspice) and extract results</p>
+<h2 id="setup-simulation-environment">Setup simulation environment</h2>
+<p>Navigate to the rply_ex0_sky130nm/sim/ directory.</p>
+<p>Make a new simulation folder</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cicsim</span> simcell  RPLY_EX0_SKY130NM RPLY_EX0 ../tech/cicsim/simcell_template.yaml</span></code></pre></div>
+<p>I would recommend you have a look at simcell_template.yaml file to
+understand what happens.</p>
+<h2 id="familiarize-yourself-with-the-simulation-folder">Familiarize
+yourself with the simulation folder</h2>
+<p>I’ve added quite a few options to cicsim, and it might be confusing.
+For reference, these are what the files are used for</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Makefile</td>
+<td>Simulation commands</td>
+</tr>
+<tr class="even">
+<td>cicsim.yaml</td>
+<td>Setup for cicsim</td>
+</tr>
+<tr class="odd">
+<td>summary.yaml</td>
+<td>Generate a README with simulation results</td>
+</tr>
+<tr class="even">
+<td>tran.meas</td>
+<td>Measurement to be done after simulation</td>
+</tr>
+<tr class="odd">
+<td>tran.py</td>
+<td>Optional python script to run for each simulation</td>
+</tr>
+<tr class="even">
+<td>tran.spi</td>
+<td>Transient testbench</td>
+</tr>
+<tr class="odd">
+<td>tran.yaml</td>
+<td>What measurements to summarize</td>
+</tr>
+</tbody>
+</table>
+<p>The default setup should run, so</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> RPLY_EX0</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical</span></code></pre></div>
+<h2 id="modify-default-testbench-tran.spi">Modify default testbench
+(tran.spi)</h2>
+<p>Delete the VDD source</p>
+<p>Add a current source of 4uA, and a voltage source of 1V to
+IBNS_20U</p>
+<pre class="spice"><code>IBP 0 IBPS_4U dc 4u
+V0  IBNS_20U 0 dc 1</code></pre>
+<p>Add the current in V0 to the plots</p>
+<h2 id="modify-measurements-tran.meas">Modify measurements
+(tran.meas)</h2>
+<p>Add measurement of the current and VGS</p>
+<pre class="spice"><code>let ibn = -i(v0)
+meas tran ibns_20u find ibn at=5n
+meas tran vgs_m1 find v(ibps_4u) at=5n</code></pre>
+<p>Run simulation</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical </span></code></pre></div>
+<p>and check that the output looks okish.</p>
+<p>Often, it’s the measurement that I get wrong, so instead of rerunning
+simulation every time I’ve added a “–no-run” option to cicsim. For
+example</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical OPT=<span class="st">&quot;--no-run&quot;</span></span></code></pre></div>
+<p>will skip the simulation, and rerun only the measurement. This is why
+you should split the testbench and the measurement. Simulations can run
+for days, but measurement takes seconds.</p>
+<p>You should notice that the current is not 20uA. We need to fix the
+schematic to make that happen. Change the instance name of M2 to
+“M2[4:0]”, and rerun typical simulation. Remember to save the
+schematic.</p>
+<h2 id="modify-result-specification-tran.yaml">Modify result
+specification (tran.yaml)</h2>
+<p>Add the result specifications, for example</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ibn</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">src</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ibns_20u</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Output current</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">min</span><span class="kw">:</span><span class="at"> -20%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typ</span><span class="kw">:</span><span class="at"> </span><span class="dv">20</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">max</span><span class="kw">:</span><span class="at"> 20%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">scale</span><span class="kw">:</span><span class="at"> </span><span class="fl">1e6</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> uA</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">vgs</span><span class="kw">:</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">src</span><span class="kw">:</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> vgs_m1</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Gate-Source voltage</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typ</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.6</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">min</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.3</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">max</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.7</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">scale</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> V</span></span></code></pre></div>
+<p>Re-run the measurement and result generation</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical OPT=<span class="st">&quot;--no-run&quot;</span></span></code></pre></div>
+<p>Open <a
+href="%5Bsim/RPLY_EX0/result/tran_Sch_typical.html%5D">result/tran_Sch_typical.html</a></p>
+<h2 id="check-waveforms">Check waveforms</h2>
+<p>Start Ngspice</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ngspice</span> </span></code></pre></div>
+<p>Load the results, and view the vgs</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">load</span> output_tran/tran_SchGtAttTtVt.raw</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">plot</span> v<span class="er">(</span><span class="ex">ibps_4u</span><span class="kw">)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">plot</span> i<span class="er">(</span><span class="ex">v0</span><span class="kw">)</span></span></code></pre></div>
+<p>Based on the waveform we can see that maybe the voltage and current
+is not completely settled at 5 ns.</p>
+<p>Change the measurement to occur at 9.5ns</p>
+</div>
+<div id="run-corner-simulation" class="slide section level1">
+<h1>Run Corner simulation</h1>
+<p>All commands should be run in sim/RPLY_EX0</p>
+<p>Analog circuits must be simulated for all physical conditions, we
+call them corners. We must check high and low temperature, high and low
+voltage, all process corners, and device-to-device mismatch.</p>
+<p>For the current mirror we don’t need to vary voltage, since we don’t
+have a VDD.</p>
+<h2 id="remove-vh-and-vl-corners-makefile">Remove Vh and Vl corners
+(Makefile)</h2>
+<p>Open Makefile in your favorite text editor.</p>
+<p>Change all instances of “Vt,Vl,Vh” and “Vl,Vh” to Vt</p>
+<h2 id="run-all-corners">Run all corners</h2>
+<p>To simulate all corners do</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical etc mc</span></code></pre></div>
+<p>where etc is extreme test condition and mc is monte-carlo.</p>
+<p>Wait for simulations to complete.</p>
+<h2 id="modify-measurements-to-check-settling">Modify measurements to
+check settling</h2>
+<p>Let’s say we want to check if the current has settled in our
+transient. We could extract the current at 9.0 ns and check that it’s
+roughly the same.</p>
+<p>Add the following line to <code>tran.meas</code></p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">meas</span> tran ibns_20u_9n find ibn at=9n</span></code></pre></div>
+<p>And add the parameter to <code>tran.yaml</code></p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ibn</span><span class="kw">:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">src</span><span class="kw">:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ibns_20u</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ibns_20u_9n</span></span></code></pre></div>
+<p>Now, as you saw, the simulations take quite a while, so we don’t want
+to rerun that. Instead do</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">make typical etc mc OPT=&quot;--no-run&quot;</span></span></code></pre></div>
+<h2 id="get-creative-with-python">Get creative with python</h2>
+<p>If you’re lazy, like me, then you don’t want to spend time checking
+all the 9.5 ns numbers versus the 9 ns numbers. I’d much rather tell the
+computer how to do that.</p>
+<p>It might be possible to do in ngspice, but sometimes a more complex
+tool is easier.</p>
+<p>Open <code>tran.py</code> in your favorite editor, try to read and
+understand it.</p>
+<p>The <code>name</code> parameter is the corner currently running, for
+example <code>tran_SchGtAmcttTtVt</code>.</p>
+<p>The measured outputs from ngspice will be added to
+<code>tran_SchGtAmcttTtVt.yaml</code></p>
+<p>Delete the “return” line.</p>
+<p>Add the following line</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do something to parameters</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="at">obj[&quot;ibn_settl_err&quot;] = obj[&quot;ibns_20u&quot;] - obj[&quot;ibns_20u_9n&quot;]</span></span></code></pre></div>
+<p>Add the error to the result spec <code>tran.yaml</code></p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">err</span><span class="kw">:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">src</span><span class="kw">:</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ibn_settl_err</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Current settling error</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typ</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">min</span><span class="kw">:</span><span class="at"> </span><span class="dv">-2</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">max</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">scale</span><span class="kw">:</span><span class="at"> </span><span class="fl">1e9</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> nA</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span></code></pre></div>
+<p>Re-run measurements to check the python code</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="at">make typical etc mc OPT=&quot;--no-run&quot;</span></span></code></pre></div>
+<h2 id="generate-summary">Generate summary</h2>
+<p>Run</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> summary</span></code></pre></div>
+<p>Install <a href="https://pandoc.org">pandoc</a> if you don’t have
+it</p>
+<p>Run</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span>  <span class="at">-t</span> slidy README.md <span class="at">-o</span> README.html</span></code></pre></div>
+<p>to generate a HTML slideshow that you can open in browser. Open the
+HTML file.</p>
+<h2 id="think-about-the-results">Think about the results</h2>
+<p>From the corner and mismatch simulation, we can observe a few
+things.</p>
+<ul>
+<li>The typical value is not 20 uA. This is likely because we have a M2
+VDS of 1 V, which is not the same as the VDS of M1. As such, the current
+will not be the same.</li>
+<li>The statistics from 30 corners show that when we add or subtract 3
+standard deviation from the mean, the resulting current is outside our
+specification of +- 20 %. I’ll leave it up to you to fix it.</li>
+</ul>
+</div>
+<div id="make-layout" class="slide section level1">
+<h1>Make layout</h1>
+<p>Open Magic VLSI</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">magic</span> <span class="kw">&amp;</span></span></code></pre></div>
+<p>Navigate to design directory</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode tcl"><code class="sourceCode tcl"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">cd</span> ../design</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">cd</span> RPLY_EX0_SKY130NM</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">load</span> RPLY_EX0.mag</span></code></pre></div>
+<p>Now brace yourself, Magic VLSI was created in the 1980’s. For it’s
+time it was extremely modern, however, today it seems dated. However, it
+is free, so we use it.</p>
+<h2 id="magic-general">Magic general</h2>
+<p>Try google for most questions, and there are youtube videos that give
+an intro.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ORw5OaY33A4&amp;t=9s">Magic
+Tutorial 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=NUahmUtY814">Magic Tutorial
+2</a></li>
+<li><a href="https://www.youtube.com/watch?v=OKWM1D0_fPI">Magic Tutorial
+3</a></li>
+<li><a
+href="http://opencircuitdesign.com/magic/commandref/commands.html">Magic
+command reference</a></li>
+</ul>
+<p>Default magic start with the BOX tool. Mouse left-click to select
+bottom corner, left-click to select top corner.</p>
+<p>Press “space” to select another tool (WIRING, NETLIST, PICK).</p>
+<p>Type “macro help” in the command window to see all shortcuts</p>
+<table>
+<thead>
+<tr class="header">
+<th>Hotkey</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>v</td>
+<td>View all</td>
+</tr>
+<tr class="even">
+<td>shift-z</td>
+<td>zoom out</td>
+</tr>
+<tr class="odd">
+<td>z</td>
+<td>zoom in</td>
+</tr>
+<tr class="even">
+<td>x</td>
+<td>look inside box (expand)</td>
+</tr>
+<tr class="odd">
+<td>shift-x</td>
+<td>don’t look inside box (unexpand)</td>
+</tr>
+<tr class="even">
+<td>u</td>
+<td>undo</td>
+</tr>
+<tr class="odd">
+<td>d</td>
+<td>delete</td>
+</tr>
+<tr class="even">
+<td>s</td>
+<td>select</td>
+</tr>
+<tr class="odd">
+<td>Shift-Up</td>
+<td>Move cell up</td>
+</tr>
+<tr class="even">
+<td>Shift-Down</td>
+<td>Move cell down</td>
+</tr>
+<tr class="odd">
+<td>Shift-Left</td>
+<td>Move cell left</td>
+</tr>
+<tr class="even">
+<td>Shift-Right</td>
+<td>Moce cell right</td>
+</tr>
+</tbody>
+</table>
+<h2 id="add-transistors-1">Add transistors</h2>
+<p>In the Window menu, turn grid on, set grid 0.5 um and turn on snap-to
+grid.</p>
+<p>Select “Devices 1 - NMOS”. Match the parameters to schematic (W=3.6,
+L=0.36, fingers=2)</p>
+<p>Unexpand, so it’s possible to select the device (shift-x)</p>
+<p>Place cursor over the device and select (s)</p>
+<p>Move cursor to somewhere else, and copy (c), it will then snap to
+grid.</p>
+<p>Select the old device, and delete (d).</p>
+<p>Copy 4 more devices for M2.</p>
+<h2 id="add-ground">Add Ground</h2>
+<p>In the command window, type</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode tcl"><code class="sourceCode tcl"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ot">see</span> no *</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ot">see</span> locali</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="ot">see</span> m1</span></code></pre></div>
+<p>Select a 0.5 um box below the transistors and paint the rectangle
+(middle click on locali)</p>
+<p>Change grid to 0.1 um.</p>
+<p>Connect guard rings to ground. Select a smaller box between guardring
+and the ground rectangle.</p>
+<p>Select the rectangle, and copy to the other transistors</p>
+<p>Connect the sources to ground.</p>
+<p><img src="docs/ground.png" /></p>
+<h2 id="route-gates">Route Gates</h2>
+<p>All the gates are connected, so we can enter use the wire mode</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode tcl"><code class="sourceCode tcl"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ot">see</span> no locali </span></code></pre></div>
+<p>It seems like the device generator adds too small m1 around the gate,
+so add a rectangle.</p>
+<p>Press “space” to enter wire mode. Left click to start a wire, and
+right click to end the wire.</p>
+<p>The drain of M1 transistor needs a connection to from gate to drain.
+We do that for the middle transistor.</p>
+<p><img src="docs/gates.png" /></p>
+<h2 id="drain-of-m2">Drain of M2</h2>
+<p>Select a box on the left most transistor drain. Paint m1.</p>
+<p>Unexpand all, use the wire tool to draw connections for the
+drains.</p>
+<p>To add vias you can do “shift-left” to move up a metal, and
+“shift-right” to go down.</p>
+<p><img src="docs/drains.png" /></p>
+<h2 id="add-labels">Add labels</h2>
+<p>Select a box on a metal, and use “Edit-&gt;Text” to add labels for
+the ports.</p>
+</div>
+<div id="check-layout" class="slide section level1">
+<h1>Check layout</h1>
+<p>The DRC can be seen directly in Magic VLSI as you draw.</p>
+<p>To check layout versus schematic navigate to work/ and do</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode tcl"><code class="sourceCode tcl"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>make xsch xlvs</span></code></pre></div>
+<p>And you should see that it’s incorrect. I forgot one transistor of
+the current mirror, M2 was 5 devices.</p>
+<p>Add the fith transistor and try again. It should still be
+incorrect.</p>
+<p>Turns out that the Xschem interpretation of width is different than
+in Magic VLSI.</p>
+<p>In xschem “W=3.6, nf=2” means that the device is actually 3.6 um
+wide, but has two fingers. In Magic “W=3.6, nf=2” means that the device
+is 7.2 um wide, and has fingers of 3.6 um.</p>
+<p>The easiest way to fix it is to modify the schematic to match the
+layout.</p>
+<p>Open the schematic, select M1, press q, and change “W=7.2”. Do the
+same for M2.</p>
+<p>Now the layout should match the schematic.</p>
+<p><img src="docs/layout.png" /></p>
+</div>
+<div id="extract-parasitics" class="slide section level1">
+<h1>Extract parasitics</h1>
+<p>With the layout complete, we can extract parasitic capacitance.</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> lpe</span></code></pre></div>
+<p>Check the generated netlist</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> lpe/RPLY_EX0_lpe.spi </span></code></pre></div>
+</div>
+<div id="simulate-parasitics" class="slide section level1">
+<h1>Simulate parasitics</h1>
+<p>Navigate to sim/RPLY_EX0. We now want to simulate the layout.</p>
+<p>The default <code>tran.spi</code> should already have support for
+that.</p>
+<p>Open the Makefile, and change</p>
+<pre><code>VIEW=Sch </code></pre>
+<p>to</p>
+<pre><code>VIEW=Lay </code></pre>
+<h2 id="typical-simuation">Typical simuation</h2>
+<p>Run</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> typical</span></code></pre></div>
+<p>The simulation might not look right.</p>
+<p>Open the <code>work/lpe/RPLY_EX0_lpe.spi</code> and
+<code>work/xsch/RPLY_EX0.spice</code> and have a look at the .subckt
+line.</p>
+<p>For me, the ports were not the same order, which makes the simuation
+fail.</p>
+<p>To fix it, open <code>design/RPLY_EX0_SKY130NM/RPLY_EX0.mag</code> in
+your favorite text editor. Yes, the layout file is a text file!</p>
+<p>Take a look towards the bottom, you’ll see</p>
+<pre><code>flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+port 1 nsew
+flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+port 2 nsew
+flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+port 3 nsew</code></pre>
+<p>Change the numbers so we get the same port order as the schematic</p>
+<pre><code>flabel metal1 4460 1360 4520 1420 0 FreeSans 320 0 0 0 IBPS_4U
+port 2 nsew
+flabel locali 4200 300 4280 380 0 FreeSans 320 0 0 0 VSS
+port 1 nsew
+flabel metal2 4520 980 4600 1060 0 FreeSans 320 0 0 0 IBNS_20U
+port 3 nsew</code></pre>
+<p>Open a new terminal, navigate to work/ and extract the parasitics
+again</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> lpe</span></code></pre></div>
+<p>Check the <code>work/lpe/RPLY_EX0_lpe.spi</code> again.</p>
+<p>Run typical simulation.</p>
+<p>Observer that now the difference between “ibps_20u” and “ibps_20u_9n”
+is a bit large.</p>
+<p>Check the current waveform. Change the transient simulation to run a
+bit longer, and extract a bit later. 19.5 ns seem to work.</p>
+<h2 id="corners">Corners</h2>
+<p>Navigate to sim/RPLY_EX0. Run all corners again</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> all</span></code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>Open <code>summary.yaml</code> and add the layout files.</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Lay_typ</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">src</span><span class="kw">:</span><span class="at"> results/tran_Lay_typical</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">method</span><span class="kw">:</span><span class="at"> typical</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Lay_etc</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">src</span><span class="kw">:</span><span class="at"> results/tran_Lay_etc</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">method</span><span class="kw">:</span><span class="at"> minmax</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Lay_3std</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">src</span><span class="kw">:</span><span class="at"> results/tran_Lay_mc</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">method</span><span class="kw">:</span><span class="at"> 3std</span></span></code></pre></div>
+<p>Open the README.md and have a look a the results.</p>
+</div>
+<div id="gotchas" class="slide section level1">
+<h1>Gotchas</h1>
+<ul>
+<li>If you have not resimulated the schematic, then you’re comparing
+apples to oranges since the schematic had W=3.6</li>
+<li>In the extracted layout the ad, as, etc looks funky, I don’t
+understand why they are zero</li>
+<li>One of reasons the simulation is slow is that ngspice needs to load
+about 50 MB of spice files (the skywater models). They could run faster
+if we only loaded what is necessary, but that’s a bit more work.</li>
+</ul>
+</div>
+<div id="bugs" class="slide section level1">
+<h1>Bugs</h1>
+<p>If you find errors in this “tutorial”, then fork, fix, and send me a
+PR.</p>
+</div>
+</body>
+</html>
