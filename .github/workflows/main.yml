@@ -10,7 +10,7 @@ jobs:
           mkdir _build
           cp -r docs _build
       - name: Slidy
-        uses: pandoc/latex
+        uses: docker://pandoc/latex:latest
         with:
           args: >-  # allows you to break string into multiple lines
             --standalone
