@@ -3,18 +3,26 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   docs:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
+      - uses: actions/checkout@v2
       - name: mkdirs
         run: |
           mkdir _build
       - name: Slidy
-        uses: docker://pandoc/latex
+        uses: docker://pandoc/latex:2.9
         with:
           args: >-  # allows you to break string into multiple lines
             --standalone
             -t slidy
             --output=_build/index.html
             README.md
+      #- name: PDF
+      #  uses: docker://pandoc/latex:2.9
+      #  with:
+      #    args: >-  # allows you to break string into multiple lines
+      #      --standalone
+      #      --output=_build/README.pdf
+      #      README.md
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
