@@ -4,6 +4,8 @@ VIEW=Lay
 
 OPT=
 
+DATE=${shell date +%Y-%m-%d}
+
 netlist:
 	cd ../../work && xschem -q -x -b -s -n ../design/RPLY_EX0_SKY130NM/RPLY_EX0.sch
 	perl -pi -e "s/\*\*\.subckt/\.subckt/ig;s/\*\*\.ends/\.ends/ig;" ../../work/xsch/RPLY_EX0.spice
@@ -38,9 +40,8 @@ temp: netlist
 summary:
 	cicsim summary --output "README.md"
 
-
-slide:
-	pandoc -s  -t slidy README.md -o README.html
+post:
+	cp README.md ../../docs/_posts/${DATE}-RPLY_EX0.markdown
 
 all: typical etc mc summary slide
 

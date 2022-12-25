@@ -1,4 +1,12 @@
-description: TB_NCM
+description: |
+  ---
+  layout: post
+  title: RPLY_EX0_SKY130NM/RPLY_EX0 simulation
+  categories: sim
+  ---
+
+  Top level testbench for current mirror
+
 simulations:
    tran:
     name: Transient analysis

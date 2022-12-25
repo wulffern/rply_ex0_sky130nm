@@ -13,14 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Open source analog integrated circuit design flow with Skywater 130nm
+title: Analog design flow with Sky130nm
 email: carsten@wulff.no
 description: >- # this means to ignore newlines until "baseurl:"
-    Getting started with analog integrated circuits can be hard. This is a
-    tutorial for schematic entry, simulation, layout and verification using
-    open source tools (Xschem, ngspice ,Magic VLSI, netgen) of a simple current mirror.
+    I want to simplify analog integrated circuit design.
 domain: "wulffern.github.io"
-baseurl: "rply_ex0_sky130nm" # the subpath of your site, e.g. /blog
+baseurl: "/rply_ex0_sky130nm/" # the subpath of your site, e.g. /blog
 url: "https://wulffern.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: cmoswulff
 github_username: wulffern
@@ -30,6 +28,12 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+
+minima:
+  skin: auto
+
+show_excerpts: true
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

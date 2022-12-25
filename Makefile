@@ -1,6 +1,6 @@
 
 JEKYLL_VERSION=3.8
-SITE=docs
+SITE=${shell pwd}/docs
 
 pdf:
 	pandoc -s  README.md -o README.pdf
@@ -9,8 +9,6 @@ slidy:
 	pandoc -s -t slidy README.md -o README.html
 
 
-jbuild:
-	cd ${SITE}; docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:${JEKYLL_VERSION} jekyll build
+jstart:
+	docker run --rm --name rply_ex0 --volume="${SITE}:/srv/jekyll" -p 3000:4000 -it jekyll/jekyll:${JEKYLL_VERSION} jekyll serve --watch --drafts
 
-jrun:
-	cd ${SITE}; docker run --name newblog --volume="$PWD:/srv/jekyll" -p 3000:4000 -it jekyll/jekyll:${JEKYLL_VERSION} jekyll serve --watch --drafts
