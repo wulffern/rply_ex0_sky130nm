@@ -9,7 +9,6 @@ work/
 *.so
 *.pdf
 *.gds
-*.html
 _site
 .sass-cache
 .jekyll-metadata
