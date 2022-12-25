@@ -153,7 +153,8 @@ Use 'f' to zoom full screen
  
 Remember to save the schematic 
 
-![](docs/RPLY_EX0.pdf)
+![](docs/RPLY_EX0.png)
+
 
 ## Netlist schematic 
 
@@ -166,7 +167,9 @@ make xsch
 cat xsch/RPLY_EX0.spice
 ```
 
+
 # Run typical simulation 
+
 I've made [cicsim](https://github.com/wulffern/cicsim) that I use to run simulations (ngspice) and extract
 results
 

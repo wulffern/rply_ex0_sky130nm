@@ -10,6 +10,9 @@ work/
 *.pdf
 *.gds
 *.html
+_site
+.sass-cache
+.jekyll-metadata
 .cache
 .local/
 build/
