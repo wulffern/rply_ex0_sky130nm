@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Programming 
+permalink: programming
 categories: AIC
 ---
 

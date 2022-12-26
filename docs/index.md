@@ -13,6 +13,7 @@ If you're completely new, then I'd recommend you start with the following
 1. [Tech](tech)
 1. [Open source analog integrated circuit flow on Skywater 130 nm](tutorial)
 1. [Tools](tools)
+1. [Programming](programming)
 
 
 ## Posts
