@@ -1,6 +1,7 @@
 ---
 layout: post
 title: RPLY_EX0_SKY130NM/RPLY_EX0 simulation
+permalink: rply_ex0_sim_all
 categories: sim
 ---
 

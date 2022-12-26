@@ -265,7 +265,7 @@ git remote add origin \
  git@github.com:<your user name>/rply_ex0_sky130nm.git
 ```
 
-## Edit README
+## Edit README.md
 
 Open README.md in your favorite text editor and make necessary changes.
 
@@ -280,7 +280,7 @@ cd work
 make 
 ```
 
-Take a look inside the Makefile. 
+Take a look inside the file called Makefile. 
 
 ---
 
@@ -864,22 +864,22 @@ Yes, the layout file is a text file!
 Take a look towards the bottom, you'll see 
 
 ``` 
-flabel metal1 4460 ...
+flabel metal1 4460 ... IBPS_4U
 port 1 nsew
-flabel locali 4200 ...
+flabel locali 4200 ... VSS
 port 2 nsew
-flabel metal2 4520 ...
+flabel metal2 4520 ... IBNS_20U
 port 3 nsew
 ```
 
 Change the numbers so we get the same port order as the schematic
 
 ``` 
-flabel metal1 4460 ...
+flabel metal1 4460 ... IBPS_4U
 port 2 nsew
-flabel locali 4200 ...
+flabel locali 4200 ... VSS
 port 1 nsew
-flabel metal2 4520 ...
+flabel metal2 4520 ... IBNS_20U
 port 3 nsew
 ```
 
@@ -922,6 +922,8 @@ Open `summary.yaml` and add the layout files.
 ```
 
 Open the README.md and have a look a the results.
+
+You can also have a look at the [rendered page](/rply_ex0_sky130nm/rply_ex0_sim_all)
 
 ---
 
