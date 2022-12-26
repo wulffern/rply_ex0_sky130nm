@@ -4,3 +4,15 @@
 
 layout: home
 ---
+
+
+I've made multiple posts on a variation of topics on this page.
+
+If you're completely new, then I'd recommend you start with the following
+
+1. [Tech](tech)
+1. [Open source analog integrated circuit flow on Skywater 130 nm](tutorial)
+1. [Tools](tools)
+
+
+## Posts

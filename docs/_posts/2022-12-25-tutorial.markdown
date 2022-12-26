@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Open source analog integrated circuit flow on Skywater 130nm 
+permalink: tutorial
 categories: AIC
 ---
 

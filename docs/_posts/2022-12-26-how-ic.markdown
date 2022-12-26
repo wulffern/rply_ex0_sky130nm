@@ -1,0 +1,11 @@
+---
+layout: post
+title: How ICs are made 
+categories: AIC
+---
+
+Over the past decade I've had various lectures for 1'st year, and other levels at NTNU with an introduction to how we make integrated circuits. I've compiled all those slidesets over the years into a single one that I go through in these videos. The full presentation is [retro_presentation](/rply_ex0_sky130nm/assets/retro_presentation.pdf)
+
+[History, Devices and Mathematical models](https://www.youtube.com/watch?v=o8XcuxAECrA)
+
+[How wafers, ICs, lithography, EUV](https://youtu.be/V5xELVCx-ZE)
