@@ -6,7 +6,7 @@ categories: AIC
 
 Getting started with analog integrated circuit design is hard. For most 
 technologies (28 nm TSMC, Globalfoundries 65 nm) you need to sign an 
-Non Disclosure agreement, and as a private person, I'm not sure it's possible.
+Non Disclosure Agreement (NDA), and as a private person, I'm not sure it's possible.
 As such, the fact that there is now an open source technology
 [sky130nm](https://skywater-pdk.readthedocs.io/en/main/) is fantastic.
 
@@ -29,14 +29,35 @@ As such, the fact that there is now an open source technology
 
 
 # Tools <a name="tools"></a>
-## Install the open source tools
 
+## Assumed knowledge
+
+I really hope that you're comfortable in the terminal and working with files/directories. If you've never used the terminal before, then you neeed to learn that first before you continue. Google "getting started with terminal".
+
+## Make project folder
+
+Navigate to a place where you will store your files. I have the following setup.
+
+```bash
+$HOME/pro  # Automatically synced to my one-drive
+$HOME/lpro # Where I store all my own git repos that I know I can loose
+```
+
+For example:
+```bash
+mkdir lpro
+cd lpro
+mkdir rply_ex0
+```
+
+For the rest of the tutorial, I'll assume you'll use `lpro`
+
+## Install the open source tools
 
 Learning to install programs from scratch can be a daunting task. If you've
 never done it before, I would recomend
-[aicex](https://github.com/wulffern/aicex). It includes this tutorial
+[aicex](https://wulffern.github.io/aicex/started). It includes this tutorial
 in the `ip/rply_ex0_sky130nm` directory.
-
 
 The tools we need are:
 - [Skywater 130nm PDK](https://github.com/google/skywater-pdk). I use [open_pdks](https://github.com/RTimothyEdwards/open_pdks) to install the PDK
@@ -49,10 +70,12 @@ The tools we need are:
 
 ## Install cicsim
 
+cicsim is a python toolset that I use to wrap around ngpisce so I don't have to modify the SPICE file for every temperature and corner.
+
 If you don't have cicsim, install it
 
 ```bash
-cd <where you want your files>
+cd rply_ex0
 git clone https://github.com/wulffern/cicsim.git
 cd cicsim
 python3 -m pip install -r requirements.txt --user
@@ -62,20 +85,22 @@ cd ..
 
 ## Install cicconf 
 
+cicconf is a python tool to quickly clone, check status, and update a bunch of git repos.
+
 If you don't have cicconf, install it
 
 ```bash
-cd <where you want your files>
+cd rply_ex0
 git clone https://github.com/wulffern/cicconf
 cd cicconf
 python3 -m pip install --user -e .
+cd ..
 ```
 
 ## Make cicconf config file
 
 Open a new file called `config.yaml` in your favorite
-text editor, and add it to the directory above where you cloned
-`tech_sky130B`
+text editor, and add it to the `rply_ex0` directory.
 
 ```yaml 
 options:
@@ -91,7 +116,6 @@ tech_sky130B:
   revision: main
 
 ```
-
 Get the tech library, and necessary files.
 
 ```bash
@@ -348,7 +372,7 @@ Re-run the measurement and result generation
 make typical OPT="--no-run"
 ```
 
-Open  [result/tran_Sch_typical.html]([sim/RPLY_EX0/result/tran_Sch_typical.html])
+Open  [https://github.com/wulffern/rply_ex0_sky130nm/sim/RPLY_BIAS/result/tran_Sch_typical.html]([sim/RPLY_EX0/result/tran_Sch_typical.html])
 
 
 ## Check waveforms
