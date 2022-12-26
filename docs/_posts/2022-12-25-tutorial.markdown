@@ -17,6 +17,7 @@ As such, the fact that there is now an open source technology
 
 # Table of Contents 
 * [Tools](#tools)
+* [Make IP files](#files)
 * [Current mirror ](#cmirr)
 * [Draw Schematic ](#sch)
 * [Typical SPICE simulation ](#simschtyp)
@@ -34,6 +35,16 @@ As such, the fact that there is now an open source technology
 
 I really hope that you're comfortable in the terminal and working with files/directories. If you've never used the terminal before, then you neeed to learn that first before you continue. Google "getting started with terminal".
 
+## Operating system
+
+I wrote this tutorial on MacOS, and it should translate to linux.
+
+Windows is a different story. I would strongly recommend you install [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) and [MobaXterm](https://mobaxterm.mobatek.net) to get the GUI.
+
+On Windows 11 I think WSL includes a GUI, but I have not tried that.
+
+You need to get comfortable in a [unix based system](https://en.wikipedia.org/wiki/Unix) if you plan to have a career in integrated circuit design. 
+
 ## Make project folder
 
 Navigate to a place where you will store your files. I have the following setup.
@@ -48,11 +59,16 @@ For example:
 mkdir lpro
 cd lpro
 mkdir rply_ex0
+cd rply_ex0
 ```
 
 For the rest of the tutorial, I'll assume you'll use `lpro`
 
-## Install the open source tools
+## Open source tools
+
+You need to make the decision on whether you want to spend the time on installing the toolset yourself, which is a great, but long, learning experience, or you want to take the short path and use the docker image.
+
+### Install the open source tools
 
 Learning to install programs from scratch can be a daunting task. If you've
 never done it before, I would recomend
@@ -67,6 +83,59 @@ The tools we need are:
 - [xschem](https://github.com/StefanSchippers/xschem)
 - python > 3.8
 
+### Use the aicex docker image
+
+Install [docker](https://docker.com)
+
+Get the aicex image
+```bash
+docker pull wulffern/aicex:0.1.1
+```
+
+#### SSH keys
+Check that you have a SSH public key 
+
+``` bash
+ls -l ./ssh/id_rsa.pub
+```
+
+If you don't have an SSH key, make one 
+
+``` bash
+ssh-keygen -t rsa
+```
+
+Copy the .ssh key
+```bash
+mkdir .ssh
+cat $HOME/.ssh/id_rsa.pub > .ssh/authorized_keys
+```
+
+#### Create startup files
+
+Open .bash_profile and add
+```bash
+#!/usr/bin/env bash
+
+export PDK_ROOT=/opt/pdk/share/pdk
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/eda/lib
+export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
+```
+
+
+#### Start docker image
+
+```bash
+docker run --rm --name aicex -p 2021:22 -v `pwd`:/home/aicex/ -i wulffern/aicex:0.1.1 &
+```
+
+Wait a few seconds until you see "Restarting OpenBSD Secure Shell server". Then
+
+``` sh
+ssh -Y -p 2021 aicex@localhost
+```
+
 
 ## Install cicsim
 
@@ -74,8 +143,8 @@ cicsim is a python toolset that I use to wrap around ngpisce so I don't have to 
 
 If you don't have cicsim, install it
 
+In rply_ex0:
 ```bash
-cd rply_ex0
 git clone https://github.com/wulffern/cicsim.git
 cd cicsim
 python3 -m pip install -r requirements.txt --user
@@ -89,8 +158,8 @@ cicconf is a python tool to quickly clone, check status, and update a bunch of g
 
 If you don't have cicconf, install it
 
+In rply_ex0:
 ```bash
-cd rply_ex0
 git clone https://github.com/wulffern/cicconf
 cd cicconf
 python3 -m pip install --user -e .
@@ -118,9 +187,14 @@ tech_sky130B:
 ```
 Get the tech library, and necessary files.
 
+In rply_ex0:
 ```bash
 cicconf clone
 ```
+
+---
+
+# Make IP files<a name="files"></a>
 
 ## Initialize new IP
 The technology library includes a template to generate
@@ -128,22 +202,76 @@ IPs (make directories, make a xschem view etc). Have
 a look inside `tech_sky130B/cicconf/ip_template.yaml` to 
 see what it does.
 
+In rply_ex0:
 ``` bash
 cicconf newip ex0
-
 ```
 
 ## Add remote repository
-
 You don't have to add a remote, but it's a nice way to collaborate with others.
+
+There are at least two options. You need to decide what you want to do. 
+
+### Use my remote
+If you want to skip parts of this tutorial, for example, you already know how to draw schematics in Xschem, you can connect to my remote. My repository contains the files at different stages during this tutorial, and enables you to skip parts.
+
+``` bash
+cd rply_ex0_sky130nm
+git branch local
+git remote add origin \
+ https://github.com/wulffern/rply_ex0_sky130nm.git
+git pull
+```
+
+With my remote you can for example fast forward to tags. You can see the tags below.
+
+| Tag | Status | Comment|
+| :-| :-| :-|
+|0.0.0 | :white_check_mark: | Make files and directories |
+|0.1.0 | :white_check_mark: | Fix readme |
+|0.2.0 | :white_check_mark: | Made schematic |
+|0.3.0 | :white_check_mark: | Typical simulation |
+|0.4.0 | :white_check_mark: | Corner simulation |
+|0.5.0 | :white_check_mark: | Made layout |
+|0.6.0 | :white_check_mark: | DRC/LVS clean|
+|0.7.0 | :white_check_mark: | Extracted parasitics|
+|0.8.0 | :white_check_mark: | Simulated parasitics |
+|0.9.0 | :white_check_mark: | Updated README with simulation results|
+|1.0.0 | :white_check_mark: | All done|
+
+For example, checkout the initial tag:
+```bash
+git checkout 0.1.0
+ls -1RG
+```
+
+Or checkout the final design:
+```bash
+git checkout 1.0.0
+ls -1RG
+```
+
+You can see the number of files are very different. 
+
+Checkout the local tag before you proceed.
+
+```bash
+git checkout local
+```
+
+Since you have a new repository, it does not have the same history as mine, 
+so lets fix that with a rebase
+```bash
+git rebase 0.0.0
+```
+
+### Use your own remote
 Create a repository with the same name on your choosen git vendor (for example [github](https://github.com))
 
 ``` bash
 cd rply_ex0_sky130nm
 git remote add origin \
- git@github.com:<your github username>/rply_ex0_sky130nm.git
-git branch -M main
-git push -u origin main
+ git@github.com:<your user name>/rply_ex0_sky130nm.git
 ```
 
 ## Edit README
@@ -153,10 +281,15 @@ Open README.md in your favorite text editor and make necessary changes.
 
 ## Familiarize yourself with the Makefile and make
 
+I write all commands I do into a Makefile. There is nothing special with a Makefile, it's just what I choose
+to use 20 years ago. I'm not sure I'd choose something different now. 
+
 ``` bash
 cd work 
 make 
 ```
+
+Take a look inside the Makefile. 
 
 ---
 
@@ -200,24 +333,27 @@ analog circuit. The open source schematic editor we will use is XSchem.
 
 All commands (except simulation commands) must be started from work/
 
-```
-make xview -n
-make xview 
+In the work/ folder there are startup files for Xschem (xschemrc) and Magic (.magicrc).
+They tell the tools where to find the process design kit, symbols, etc. At some point you probably 
+need to learn those also, but I'd wait until you feel a bit more comfortable.
+
+Open the schematic:
+
+```bash
+xschem -b ../design/RPLY_EX0_SKY130NM/RPLY_EX0.sch &
 ```
 
 ## Add Ports 
 
 Add IBPS\_4U and IBPS\_20U ports, the P and N in the name signifies what
 transistor the current comes from. So IBPS must go into a diode connected NMOS,
-and N will be our output, and go into a diode connected PMOS somewhere else
-
+and N will be our output, and go into a diode connected PMOS somewhere else.
 
 ## Add transistors 
 
 Use 'Shift-I' to open the library manager. Use the "sky130B/libs.tech/xschem"
 path. Open the "sky130_fd_pr" library. Find nfet_01v8.sym and place in your
 schematic.
-
 
 Select the transistor by clicking on it, press 'q' to bring up the properties. 
 Set L=0.36, W=3.6, nf=2 and press OK.
@@ -246,7 +382,6 @@ Remember to save the schematic
 Check that the netlist looks OK 
 
 In work/
-
 ``` bash
 make xsch 
 cat xsch/RPLY_EX0.spice
@@ -372,7 +507,7 @@ Re-run the measurement and result generation
 make typical OPT="--no-run"
 ```
 
-Open  [https://github.com/wulffern/rply_ex0_sky130nm/sim/RPLY_BIAS/result/tran_Sch_typical.html]([sim/RPLY_EX0/result/tran_Sch_typical.html])
+Open [result/tran_Sch_typical.html]([https://github.com/wulffern/rply_ex0_sky130nm/sim/RPLY_EX0/result/tran_Sch_typical.html])
 
 
 ## Check waveforms
@@ -385,6 +520,7 @@ ngspice
 
 Load the results, and view the vgs 
 
+In ngspice
 ``` bash
 load output_tran/tran_SchGtAttTtVt.raw
 plot v(ibps_4u)
