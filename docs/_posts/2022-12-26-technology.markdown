@@ -10,7 +10,7 @@ What the foundry needs to make an IC is a [GDSII](https://en.wikipedia.org/wiki/
 
 You could, if you were crazy enough, design your chip in the GDSII file format [^1], but that's too hard for almost all normal humans. So you need help, and that's where Electronic Design Automation (EDA) Tools come in. EDA tools try to assist you, more or less successfully, to create this GDSII file.
 
-If you want to, then you can download [klayout](https://www.klayout.de) a GDSII file. 
+If you want to, then you can download [klayout](https://www.klayout.de) and open a GDSII file. 
 
 
 ## Electronic Design Automation (EDA)

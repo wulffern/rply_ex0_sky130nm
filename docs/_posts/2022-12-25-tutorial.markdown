@@ -98,6 +98,7 @@ docker pull wulffern/aicex:0.1.1
 Check that you have a SSH public key 
 
 ``` bash
+
 ls -l ./ssh/id_rsa.pub
 ```
 
@@ -109,6 +110,7 @@ ssh-keygen -t rsa
 
 Copy the .ssh key
 ``` bash
+cd lpro/rply_ex0
 mkdir .ssh
 cat $HOME/.ssh/id_rsa.pub > .ssh/authorized_keys
 ```
@@ -129,6 +131,10 @@ export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
 #### Start docker image
 
 In case you have no idea what docker is, think of it like this. Docker is a "magic package engine" that can wrap a full blown linux server into a "file" (a container), and run it locally on your computer. In other words, the command below will run a linux server on your PC with all the necessary tools inside. 
+
+> The docker command below will connect the /home/aicex inside docker to the
+> current directory (where you run the command below). You should always be in
+> the lpro/rply_ex0 when you run docker.
 
 ```bash
 docker run --rm --name aicex -p 2021:22 -v `pwd`:/home/aicex/ -i wulffern/aicex:0.1.1 &
