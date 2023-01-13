@@ -117,7 +117,7 @@ cat $HOME/.ssh/id_rsa.pub > .ssh/authorized_keys
 
 #### Create startup files
 
-Open .bash_profile and add
+Create .bash\_profile in lpro/rply\_ex0 and add
 ``` bash
 #!/usr/bin/env bash
 
