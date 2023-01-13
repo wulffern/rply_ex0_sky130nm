@@ -146,6 +146,9 @@ If your starting from command line in windows, then
 docker run --rm --name aicex -p 2021:22 -v %CD%\:/home/aicex/ -i wulffern/aicex:0.1.1 &
 ```
 
+We've seen in Windows 11 problems if you install docker inside ubuntu. So
+install docker using the windows download from the internet.
+
 Wait a few seconds until you see "Restarting OpenBSD Secure Shell server". Then
 
 ``` sh
