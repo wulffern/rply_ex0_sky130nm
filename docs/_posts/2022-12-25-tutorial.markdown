@@ -442,7 +442,8 @@ Save the current in V0 by adding i(V0) to the save statement in the testbench
 
 ## Modify measurements (tran.meas)
 
-Add measurement of the current and VGS
+Add measurement of the current and VGS. It must be added between the
+"MEAS_START" and "MEAS_END" lines.
 
 ``` spice
 let ibn = -i(v0)
