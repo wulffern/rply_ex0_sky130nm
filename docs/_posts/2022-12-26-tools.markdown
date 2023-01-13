@@ -45,9 +45,9 @@ Assumes Ubuntu 20.04
 ```bash
 cd /tmp
 git clone https://github.com/wulffern/aicex.git
-mkdir /opt
-cp -r /tmp/aicex/tests .
+sudo mkdir /opt
 cd opt/
+sudo cp -r /tmp/aicex/tests .
 sudo /bin/bash tests/install_all.sh
 #- Go back to where you cloned aicex, for example cd /home/<user>/aicex
 source /opt/tests/bashrc
