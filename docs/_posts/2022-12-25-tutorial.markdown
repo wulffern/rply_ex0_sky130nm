@@ -190,6 +190,14 @@ In rply_ex0:
 cicconf clone --https
 ```
 
+If you're running in the docker, then you may need to run the installation of
+cicconf again
+
+```bash
+cd cicconf
+python3 -m pip install --user -e .
+```
+
 ---
 
 # Make IP files<a name="files"></a>
