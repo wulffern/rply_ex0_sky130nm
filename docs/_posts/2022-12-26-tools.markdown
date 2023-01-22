@@ -34,29 +34,36 @@ Now, if you don't want to listen to my advice, just skip to Cloning AICEX and tr
 |OpenLane	|Full synthesis, place and route, and timing closure for digital|	[openlane](https://openlane.readthedocs.io/en/latest/)|	https://openlane.readthedocs.io/en/latest/getting_started/installation.html|
 
 ## Option 0: Docker - with someone else than me maintaining
-See https://github.com/iic-jku/iic-osic-tools 
+See [https://github.com/iic-jku/iic-osic-tools](https://github.com/iic-jku/iic-osic-tools) 
 
 ## Option 1: Docker - Maybe the simplest
-See https://github.com/wulffern/aicex
+See
+[https://analogicus.com/aicex/started/](https://analogicus.com/aicex/started/)
 
-## Option 2:  Install the tools from my precompiled repo
-Assumes Ubuntu 20.04
+## Option 2: Vagrant - for those struggling with Docker
+See [https://github.com/wulffern/aicex/tree/main/vaicex](https://github.com/wulffern/aicex/tree/main/vaicex)
 
+## Option 3:  Install the tools with my makefile
+
+Clone [https://github.com/wulffern/aicex](https://github.com/wulffern/aicex)
+
+On Ubuntu or Mac
 ```bash
-cd /tmp
-git clone https://github.com/wulffern/aicex.git
-sudo mkdir /opt
-cd opt/
-sudo cp -r /tmp/aicex/tests .
-sudo /bin/bash tests/install_all.sh
-#- Go back to where you cloned aicex, for example cd /home/<user>/aicex
-source /opt/tests/bashrc
-cd /tmp/aicex
-make test
+cd aicex/tests/
+make requirements
+make tt
+make eda_compile
+sudo make eda_install
+sudo python3 -m pip install matplotlib numpy click svgwrite pyyaml pandas tabulate wheel setuptools tikzplotlib
 ```
 
-## Option 3: Install from source (with a bit of help)
-Have a look at https://raw.githubusercontent.com/wulffern/eda/main/Makefile
+You need to add the following to your ~/.bashrc
+```bash
+export PDK_ROOT=/opt/pdk/share/pdk
+export LD_LIBRARY_PATH=/opt/eda/lib
+export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
+```
+
 
 ## Option 4: Install from source
 You know what to do I assume
