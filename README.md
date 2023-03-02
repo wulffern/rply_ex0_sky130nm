@@ -20,18 +20,20 @@ To checkout a specific stage, do
 git checkout 0.1.0
 ```
 
-| Tag   | Status | Comment              |
-|:------|:-------|:---------------------|
-| 0.1.0 | v      | Fix readme           |
-| 0.2.0 | v      | Made schematic       |
-| 0.3.0 | v      | Typical simulation   |
-| 0.4.0 | v      | Corner simulation    |
-| 0.5.0 | v      | Made layout          |
-| 0.6.0 | v      | DRC/LVS clean        |
-| 0.7.0 | v      | Extracted parasitics |
-| 0.8.0 | v      | Simulated parasitics |
-| 0.9.0 | v      | Updated README       |
-| 1.0.0 | v      | All done             |
+| Tag   | Status | Comment                        |
+|:------|:-------|:-------------------------------|
+| 0.1.0 | v      | Fix readme                     |
+| 0.2.0 | v      | Made schematic                 |
+| 0.3.0 | v      | Typical simulation             |
+| 0.4.0 | v      | Corner simulation              |
+| 0.5.0 | v      | Made layout                    |
+| 0.6.0 | v      | DRC/LVS clean                  |
+| 0.7.0 | v      | Extracted parasitics           |
+| 0.8.0 | v      | Simulated parasitics           |
+| 0.9.0 | v      | Updated README                 |
+| 1.0.0 | v      | All done                       |
+| 1.0.1 | v      | Updated after student feedback |
+
 
 # Posts 
 
