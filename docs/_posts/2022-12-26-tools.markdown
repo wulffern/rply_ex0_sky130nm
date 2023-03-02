@@ -9,12 +9,16 @@ In the course we will be using open source tools.
 
 ## Word of warning
 
-If you're unfamiliar with linux, git, make, compiling, then I'm afraid just getting the tools installed will be a difficult thing for you. I have made a docker image that you can use which does make it easier (hopefully), but I would strongly encourage you to install everything locally. The tools run on both linux and MacOS. If you use windows, then install the tools in windows subsystem for linux, and use [MobaXterm](https://mobaxterm.mobatek.net) to connect linux server or to the local wsl installation.
+If you're unfamiliar with linux, git, make, compiling, then I'm afraid just
+getting the tools installed will be a difficult thing for you. 
+The tools run on both linux and MacOS. If you use windows, then install the
+tools in windows subsystem for linux, and use
+[MobaXterm](https://mobaxterm.mobatek.net) to connect linux server or to the
+local wsl installation. On Windows 11, or the latest WSL with GUI, you don't need the MobaXterm.
 
-The reason I want you to learn to install the tools is because they are continuously evolving, and you should know how to install future versions. In addition, all engineers should know the principles of installing tools. The more you know, the more indispensible you become for an employer, and it becomes easier to talk to people that know alot.
-
-Now, if you don't want to listen to my advice, just skip to Cloning AICEX and try to use the docker
-
+The reason I want you to learn to install the tools is because they are
+continuously evolving, and you should know how to install future versions.
+In addition, all engineers should know the principles of installing tools. The more you know, the more indispensible you become for an employer, and it becomes easier to talk to people that know alot.
 
 ## Analog tools
 
@@ -33,38 +37,15 @@ Now, if you don't want to listen to my advice, just skip to Cloning AICEX and tr
 |:---|:---|:---|:---|  
 |OpenLane	|Full synthesis, place and route, and timing closure for digital|	[openlane](https://openlane.readthedocs.io/en/latest/)|	https://openlane.readthedocs.io/en/latest/getting_started/installation.html|
 
-## Option 0: Docker - with someone else than me maintaining
+
+## Option 1: Install the tools via aicex
+
+See [Getting Started](https://analogicus.com/aicex/started/)
+
+
+## Option 2: Docker - with someone else than me maintaining
 See [https://github.com/iic-jku/iic-osic-tools](https://github.com/iic-jku/iic-osic-tools) 
 
-## Option 1: Docker - Maybe the simplest
-See
-[https://analogicus.com/aicex/started/](https://analogicus.com/aicex/started/)
 
-## Option 2: Vagrant - for those struggling with Docker
-See [https://github.com/wulffern/aicex/tree/main/vaicex](https://github.com/wulffern/aicex/tree/main/vaicex)
-
-## Option 3:  Install the tools with my makefile
-
-Clone [https://github.com/wulffern/aicex](https://github.com/wulffern/aicex)
-
-On Ubuntu or Mac
-```bash
-cd aicex/tests/
-make requirements
-make tt
-make eda_compile
-sudo make eda_install
-sudo python3 -m pip install matplotlib numpy click svgwrite pyyaml pandas tabulate wheel setuptools tikzplotlib
-source install_open_pdk.sh
-```
-
-You need to add the following to your ~/.bashrc
-```bash
-export PDK_ROOT=/opt/pdk/share/pdk
-export LD_LIBRARY_PATH=/opt/eda/lib
-export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
-```
-
-
-## Option 4: Install from source
+## Option 3: Install from source
 You know what to do I assume

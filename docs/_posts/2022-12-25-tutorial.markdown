@@ -64,110 +64,16 @@ For the rest of the tutorial, I'll assume you'll use `lpro/rply_ex0` as the proj
 
 ## Open source tools
 
-You need to make the decision on whether you want to spend the time on installing the toolset yourself, which is a great, but long, learning experience, or you want to take the short path and use the docker image.
+We first ran this tutorial in the spring of 2023. If you check the 1.0.1 tag
+, you'll find the post from that time. 
 
-The disadvantage with the docker image is that I've done most of the work for you, so you won't learn as much. Also, I don't update the docker image that often, so you'll run older versions of the tools. And it's slower.
+The main thing we learned was, in theory, a docker image is a fast way
+to start, in practice, it was not. Lot's of issues with Windows 11, X-server
+etc.
 
-### Install the open source tools
+I would recommend you install all tools locally. 
+Follow the description at [Getting Started](https://analogicus.com/aicex/started/)
 
-Learning to install programs from scratch can be a daunting task. If you've
-never done it before, get ready for many hours and days spent on lots of useful learning.
-
-The tools we need are:
-- [Skywater 130nm PDK](https://github.com/google/skywater-pdk). I use [open_pdks](https://github.com/RTimothyEdwards/open_pdks) to install the PDK
-- [Magic VLSI](https://github.com/RTimothyEdwards/magic) for layout
-- [ngspice](https://git.code.sf.net/p/ngspice/ngspice) for simulation
-- [netgen](https://github.com/RTimothyEdwards/netgen.git) for LVS
-- [xschem](https://github.com/StefanSchippers/xschem)
-- python > 3.8
-
-For mac I've collected the commands I use in a [Makefile](https://github.com/wulffern/compile_eda_mac/blob/main/Makefile)
-
-For linux I use another [Makefile](https://github.com/wulffern/eda/blob/main/Makefile)
-
-### Use the aicex docker image
-
-Install [docker](https://docker.com)
-
-Get the aicex image
-```bash
-docker pull wulffern/aicex:0.1.1
-```
-
-#### SSH keys
-Check that you have a SSH public key
-
-``` bash
-
-ls -l ./ssh/id_rsa.pub
-```
-
-If you don't have an SSH key, make one
-
-``` bash
-ssh-keygen -t rsa
-```
-
-Copy the .ssh key
-``` bash
-cd lpro/rply_ex0
-mkdir .ssh
-cat $HOME/.ssh/id_rsa.pub > .ssh/authorized_keys
-```
-
-#### Create startup files
-
-Create .bash\_profile in lpro/rply\_ex0 and add
-``` bash
-#!/usr/bin/env bash
-
-export PDK_ROOT=/opt/pdk/share/pdk
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/eda/lib
-export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
-```
-
-
-#### Start docker image
-
-In case you have no idea what docker is, think of it like this. Docker is a "magic package engine" that can wrap a full blown linux server into a "file" (a container), and run it locally on your computer. In other words, the command below will run a linux server on your PC with all the necessary tools inside.
-
-> The docker command below will connect the /home/aicex inside docker to the
-> current directory (where you run the command below). You should always be in
-> the lpro/rply_ex0 when you run docker.
-
-```bash
-docker run --rm --name aicex -p 2021:22 -v `pwd`:/home/aicex/ -i wulffern/aicex:0.1.1 &
-```
-
-If your starting from command line in windows, then 
-
-```bash
-docker run --rm --name aicex -p 2021:22 -v %CD%\:/home/aicex/ -i wulffern/aicex:0.1.1 &
-```
-
-We've seen in Windows 11 problems if you install docker inside ubuntu. So
-install docker using the windows download from the internet.
-
-Wait a few seconds until you see "Restarting OpenBSD Secure Shell server". Then
-
-``` sh
-ssh -Y -p 2021 aicex@localhost
-```
-
-You're now in the linux server. If you're on Windows you can setup MobaXterm to connect to the docker image running in the background. See the Docker desktop to stop or remove the container.
-
-## Install cicconf
-
-cicconf is a python tool to quickly clone, check status, and update a bunch of git repos.
-
-In rply_ex0:
-```bash
-git clone https://github.com/wulffern/cicconf
-cd cicconf
-python3 -m pip install --user -e .
-cd ..
-```
 
 ## Make cicconf config file
 
@@ -180,10 +86,6 @@ options:
     ip: tech_sky130B/cicconf/ip_template.yaml
   project: rply
   technology: sky130nm
-cicsim:
-  remote: git@github.com:wulffern/cicsim.git
-  revision: 0.1.1
-  on_clone: python3 -m pip install --user -e .
 cpdk:
   remote: git@github.com:wulffern/cpdk.git
   revision: 0.1.1
@@ -197,14 +99,6 @@ Get the tech library, and necessary files.
 In rply_ex0:
 ```bash
 cicconf clone --https
-```
-
-If you're running in the docker, then you may need to run the installation of
-cicconf again
-
-```bash
-cd cicconf
-python3 -m pip install --user -e .
 ```
 
 ---
