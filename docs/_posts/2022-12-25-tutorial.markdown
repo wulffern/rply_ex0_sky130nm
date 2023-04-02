@@ -572,7 +572,7 @@ From the corner and mismatch simulation, we can observe a few things.
 
 # Draw Layout <a name="layout"></a>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2iuqUWrDDaA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="400" height="300" src="https://www.youtube.com/embed/2iuqUWrDDaA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 A foundry (the factory that makes integrated circuits) needs to know how we want
   them to create our circuit. So we need to provide them with a "layout", the
