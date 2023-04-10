@@ -19,5 +19,5 @@ I've been using emacs since 1999, and I use it every day in my job. That means, 
 
 ## Decent editors
 
-VS Code - https://code.visualstudio.com
-Atom - https://atom.io
+- [VS Code](https://code.visualstudio.com)
+- [Atom](https://atom.io)
