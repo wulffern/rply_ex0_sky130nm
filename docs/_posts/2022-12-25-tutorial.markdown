@@ -5,6 +5,8 @@ permalink: tutorial
 categories: AIC
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/go02Z-_3x3s?si=fDw2_69DGctVozgG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 Getting started with analog integrated circuit design is hard. For most
 technologies (28 nm TSMC, Globalfoundries 65 nm) you need to sign an
 Non Disclosure Agreement (NDA), and as a private person, I'm not sure it's possible.
