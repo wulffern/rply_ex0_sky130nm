@@ -371,7 +371,11 @@ Run simulation
 ``` bash
 make typical
 ```
- and check that the output looks okish.
+ and check that the output looks okish. 
+ 
+ If you get wierd results, then check the
+ port order in the `tran.spi` compared to the `../work/xsch/RPLY_EX0.spice`
+ file. I've seen different versions of Xschem netlist the schematic differently. 
 
 Often, it's the measurement that I get wrong, so instead of rerunning simulation every time
 I've added a "--no-run" option to cicsim. For example
@@ -562,6 +566,29 @@ pandoc -s  -t slidy README.md -o README.html
 ```
 
 to generate a HTML slideshow that you can open in browser. Open the HTML file.
+
+## Viewing results without GUI browser 
+
+If your on a system without a browser, or indeed a GUI, then it's possible to
+view the results in the terminal.
+
+Check if `lynx` is installed, if it's not installed, then 
+
+On linux
+```bash
+sudo apt-get install lynx
+```
+
+On Mac
+```bash
+brew install lynx
+```
+
+Then 
+
+```bash
+lynx README.html
+```
 
 ## Think about the results
 
