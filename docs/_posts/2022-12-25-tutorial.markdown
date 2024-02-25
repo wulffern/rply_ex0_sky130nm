@@ -637,7 +637,9 @@ Try google for most questions, and there are youtube videos that give an intro.
 - [Magic Tutorial 1](https://www.youtube.com/watch?v=ORw5OaY33A4&t=9s)
 - [Magic Tutorial 2](https://www.youtube.com/watch?v=NUahmUtY814)
 - [Magic Tutorial 3](https://www.youtube.com/watch?v=OKWM1D0_fPI)
-- [Magic command reference](http://opencircuitdesign.com/magic/commandref/commands.html)
+- [Magic command
+  reference](http://opencircuitdesign.com/magic/commandref/commands.html)
+- [Magic Documentation](https://analogicus.com/magic/)
 
 Default magic start with the BOX tool. Mouse left-click to select bottom corner,
 left-click to select top corner.
