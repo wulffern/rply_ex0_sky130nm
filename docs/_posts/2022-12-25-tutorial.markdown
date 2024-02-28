@@ -78,6 +78,13 @@ etc.
 I would recommend you install all tools locally. 
 Follow the description at [Getting Started](https://analogicus.com/aicex/started/)
 
+Even if you have all the open source tools installed, you do need to install `cicsim` and
+`cicconf` (Unless you just did while reading the Getting Started link)
+
+```bash
+python3 -m pip install cicsim cicconf
+```
+
 
 ## Make cicconf config file
 
