@@ -28,8 +28,10 @@ url: "https://wulffern.github.io" # the base hostname & protocol for your site, 
 # Build settings
 show_excerpts: false
 
+future: true
+
 minima:
-  skin: auto
+  skin: classic
   social_links:
     - { platform: github,         user_url: "https://github.com/wulffern/rply_bias_sky130nm" }
     - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=uMepikoAAAAJ&hl=en&oi=ao" }
