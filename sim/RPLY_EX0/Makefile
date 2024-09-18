@@ -11,7 +11,7 @@ netlist:
 	perl -pi -e "s/\*\*\.subckt/\.subckt/ig;s/\*\*\.ends/\.ends/ig;" ../../work/xsch/RPLY_EX0.spice
 
 test:
-	${MAKE} typical OPT="Debug"
+	${MAKE} typical
 
 typical: netlist
 	cicsim run --name ${VIEW}_typical ${TB} ${OPT} ${VIEW} Gt Ktt Tt Vt

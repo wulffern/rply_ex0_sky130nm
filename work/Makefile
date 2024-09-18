@@ -16,3 +16,6 @@ CELL=RPLY_EX0
 
 #- Provide cells you want to check for the lvsall drcall commands
 CELLS = RPLY_EX0
+
+test:
+	make drc xsch xlvs OPT="--short"
