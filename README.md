@@ -1,5 +1,9 @@
 
 
+[![GDS](../../actions/workflows/gds.yaml/badge.svg)](../../actions/workflows/gds.yaml)
+[![DRC](../../actions/workflows/drc.yaml/badge.svg)](../../actions/workflows/drc.yaml)
+[![LVS/LPE](../../actions/workflows/lvslpe.yaml/badge.svg)](../../actions/workflows/lvslpe.yaml)
+
 # Why
 I wanted to create a step by step "tutorial" for 
 the flow. Both to debug the tech setup, and to make it easier
