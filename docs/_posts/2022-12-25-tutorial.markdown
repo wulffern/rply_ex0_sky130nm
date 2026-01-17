@@ -6,6 +6,8 @@ categories: AIC
 ---
 
 
+This is a tutorial from 2024, as such, it's not up to date. I would recommend
+you look at [Sky130nm tutorial](https://analogicus.com/aic2026/sky130nm_tutorial)
 
 Getting started with analog integrated circuit design is hard. For most
 technologies (28 nm TSMC, Globalfoundries 65 nm) you need to sign an
@@ -76,7 +78,7 @@ to start, in practice, it was not. Lot's of issues with Windows 11, X-server
 etc.
 
 I would recommend you install all tools locally. 
-Follow the description at [Getting Started](https://analogicus.com/aicex/started/)
+Follow the description at [The Tools](https://analogicus.com/aic2026/the_tools)
 
 Even if you have all the open source tools installed, you do need to install `cicsim` and
 `cicconf` (Unless you just did while reading the Getting Started link)
