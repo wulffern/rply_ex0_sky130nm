@@ -6,7 +6,7 @@ categories: AIC
 ---
 
 
-This is a tutorial from 2024, as such, it's not up to date. I would recommend
+This is a tutorial from 2023, as such, it's not up to date. I would recommend
 you look at [Sky130nm tutorial](https://analogicus.com/aic2026/sky130nm_tutorial)
 
 Getting started with analog integrated circuit design is hard. For most
